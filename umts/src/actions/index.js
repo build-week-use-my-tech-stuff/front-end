@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import axiosWithAuth from '../utils/axiosAuth';
 
-// Login/Register Actions
+// Login Actions
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -9,33 +9,69 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN })
     return axios
-        .post('', creds)
+        .post('/login', creds)
         .then(response => {
             localStorage.setItem('token', response.data.payload);
             dispatch({ type: LOGIN_SUCCESS, payload: response.data.payload })
         })
         .catch(err => {
-            dispatch({ type: LOGIN_FAILURE, payload: err})
+            dispatch({ type: LOGIN_FAILURE, payload: err })
         })
 
 }
 
-// Tech Item Actions
-export const FETCHING = 'FETCHING';
-export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
-export const FETCHING_FAILURE = 'FETCHING_FAILURE';
+// Register Actions
+export const REGISTER = 'REGISTER';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-export const fetchingItems = () => dispatch => {
-    dispatch({ type: FETCHING })
+export const register = creds => dispatch => {
+    dispatch({ type: REGISTER })
+    return axios
+        .post('/register', creds)
+        .then(response => {
+            dispatch({ type: REGISTER_SUCCESS, payload: response.data.payload})
+        })
+        .catch(err => {
+            dispatch({ type: REGISTER_FAILURE, payload: err })
+        })
+}
+
+// Users Actions
+export const FETCHING_USERS = 'FETCHING_USERS';
+export const FETCHING_USERS_SUCCESS = 'FETCHING_USERS_SUCCESS';
+export const FETCHING_USERS_FAILURE = 'FETCHING_USERS_FAILURE';
+
+export const fetchingUsers = () => dispatch => {
+    dispatch({ type: FETCHING_USERS })
     // insert axiosWithAuth here for protected endpoints
     return axios
         .get('')
         .then(response => {
             console.log(response.data);
-            dispatch({ type: FETCHING_SUCCESS, payload: response.data })
+            dispatch({ type: FETCHING_USERS_SUCCESS, payload: response.data })
         })
         .catch(err => {
-            dispatch({ type: FETCHING_FAILURE, payload: err })
+            dispatch({ type: FETCHING_USERS_FAILURE, payload: err })
+        })
+}
+
+// Tech Item Actions
+export const FETCHING_ITEM = 'FETCHING_ITEM';
+export const FETCHING_ITEM_SUCCESS = 'FETCHING_ITEM_SUCCESS';
+export const FETCHING_ITEM_FAILURE = 'FETCHING_ITEM_FAILURE';
+
+export const fetchingItems = () => dispatch => {
+    dispatch({ type: FETCHING_ITEM })
+    // insert axiosWithAuth here for protected endpoints
+    return axios
+        .get('')
+        .then(response => {
+            console.log(response.data);
+            dispatch({ type: FETCHING_ITEM_SUCCESS, payload: response.data })
+        })
+        .catch(err => {
+            dispatch({ type: FETCHING_ITEM_FAILURE, payload: err })
         })
 }
 
