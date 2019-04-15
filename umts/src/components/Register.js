@@ -8,6 +8,8 @@ class Register extends React.Component {
             username: '',
             password: '',
             email: '',
+            firstName: '',
+            lastName: '',
             location: '',
             phoneNumber: '',
             picture: ''
@@ -24,60 +26,87 @@ class Register extends React.Component {
     };
 
     register = event => {
-        // event.preventDefault();
+        event.preventDefault();
         this.props.register(this.state.credentials);
         this.setState({
             credentials: {
                 username: '',
                 password: '',
                 email: '',
+                firstName: '',
+                lastName: '',
                 location: '',
                 phoneNumber: '',
                 picture: ''
             }
         });
+// Pushing to protected rather than to login here.
+        this.props.history.push('/protected')
     };
 
     render() {
         return(
-            <div>
+            <div className = 'registerForm'>
+                <h1>Register Your Account</h1>
                 <form onSubmit = {this.register}>
                     <input 
+                        className = 'input'
                         name = 'username'
                         placeholder = 'Username'
                         type = 'text'
                         value = {this.state.credentials.username}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
+                        className = 'input'
                         name = 'password'
                         placeholder = 'Password'
                         type = 'password'
                         value = {this.state.credentials.password}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input
+                        className = 'input' 
                         name = 'email'
                         placeholder = 'Email Address'
                         type = 'text'
                         value = {this.state.credentials.email}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
+                        className = 'input'
+                        name = 'firstName'
+                        placeholder = 'First Name'
+                        type = 'text'
+                        value = {this.state.credentials.firstName}
+                        onChange = {this.handleRegisterChange}
+                    />
+                    <input 
+                        className = 'input'
+                        name = 'lastName'
+                        placeholder = 'Last Name'
+                        type = 'text'
+                        value = {this.state.credentials.lastName}
+                        onChange = {this.handleRegisterChange}
+                    />
+                    <input 
+                        className = 'input'
                         name = 'location'
                         placeholder = 'Location'
                         type = 'text'
                         value = {this.state.credentials.location}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
+                        className = 'input'
                         name = 'phoneNumber'
                         placeholder = 'Phone Number'
                         type = 'text'
                         value = {this.state.credentials.phoneNumber}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
+                        className = 'input'
                         name = 'picture'
                         placeholder = 'Profile Picture'
                         type = 'text'
@@ -85,13 +114,14 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                 </form>
-                <button type = 'submit'>Register</button>
+                <button className = 'actionBtn'>Register</button>
             </div>
         )
     } 
 }
 
 const mapStateToProps = state => ({
+    isRegistered: state.isRegistered,
     error: state.error,
 })
 
