@@ -5,8 +5,8 @@ import { login } from '../actions';
 class Login extends React.Component {
     state = {
         credentials: {
-            username: '',
-            password: ''
+            username: '1user',
+            password: 'pass'
         }
     };
 
@@ -36,16 +36,16 @@ class Login extends React.Component {
                 type='text'
                 name='username'
                 placeholder='Username'
-                onChange={this.handleChange}
-                value={this.state.username}
+                onChange={(e) => {this.handleLoginChange(e)}}
+                value={this.state.credentials.username}
               />
               <input
                 className = 'input'
                 type='password'
                 name='password'
                 placeholder='Password'
-                onChange={this.handleChange}
-                value={this.state.password}
+                onChange={this.handleLoginChange}
+                value={this.state.credentials.password}
               />
               <button className = 'actionBtn'>Log in</button>
             </form>
