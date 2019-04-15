@@ -6,7 +6,15 @@ class ItemForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            name: '',
+            seller: '',
+            cost: '',
+            description: '',
+            picture: '',
+            comments: [{
+                poster: '',
+                content: ''
+            }]
         }
     }
 
@@ -28,37 +36,53 @@ class ItemForm extends React.Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit = {this.handleAddItem}>
                     <input 
                         type = 'text'
-                        name = 'XX'
-                        placeholder = 'XX'
+                        name = 'name'
+                        placeholder = 'Item Name'
+                        onChange = {this.handleAddChange}
+                        value = {this.state.name}
+                    />
+                    <input 
+                        type = 'text'
+                        name = 'seller'
+                        placeholder = 'Username'
+                        /* look into how to auto-populate this field */
                         onChange = {this.handleAddChange}
                         value = {this.state.XXX}
                     />
-                     <input 
+                    <input 
                         type = 'text'
-                        name = 'XX'
-                        placeholder = 'XX'
+                        name = 'cost'
+                        placeholder = 'Cost To Rent'
                         onChange = {this.handleAddChange}
-                        value = {this.state.XXX}
+                        value = {this.state.cost}
                     />
-                     <input 
+                    <input 
                         type = 'text'
-                        name = 'XX'
-                        placeholder = 'XX'
+                        name = 'description'
+                        placeholder = 'Item Description'
                         onChange = {this.handleAddChange}
-                        value = {this.state.XXX}
+                        value = {this.state.description}
+                    />
+                    <input 
+                        type = 'text'
+                        name = 'picture'
+                        placeholder = 'Image URL'
+                        onChange = {this.handleAddChange}
+                        value = {this.state.picture}
                     />
                 </form>
-                <button>Add Item</button>
+                <button type = 'submit'>Add Item</button>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    addingItem: state.addingItem
+    addingItem: state.addingItem,
+    error: state.error
 })
 
 export default connect(mapStateToProps, { addItem })(ItemForm);

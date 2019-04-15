@@ -8,6 +8,8 @@ class Register extends React.Component {
             username: '',
             password: '',
             email: '',
+            firstName: '',
+            lastName: '',
             location: '',
             phoneNumber: '',
             picture: ''
@@ -31,11 +33,15 @@ class Register extends React.Component {
                 username: '',
                 password: '',
                 email: '',
+                firstName: '',
+                lastName: '',
                 location: '',
                 phoneNumber: '',
                 picture: ''
             }
         });
+// Pushing to protected rather than to login here.
+        this.props.history.push('/protected')
     };
 
     render() {
@@ -49,35 +55,49 @@ class Register extends React.Component {
                         value = {this.state.credentials.username}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
                         name = 'password'
                         placeholder = 'Password'
                         type = 'password'
                         value = {this.state.credentials.password}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
                         name = 'email'
                         placeholder = 'Email Address'
                         type = 'text'
                         value = {this.state.credentials.email}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
+                        name = 'firstName'
+                        placeholder = 'First Name'
+                        type = 'text'
+                        value = {this.state.credentials.firstName}
+                        onChange = {this.handleRegisterChange}
+                    />
+                    <input 
+                        name = 'lastName'
+                        placeholder = 'Email Address'
+                        type = 'text'
+                        value = {this.state.credentials.email}
+                        onChange = {this.handleRegisterChange}
+                    />
+                    <input 
                         name = 'location'
                         placeholder = 'Location'
                         type = 'text'
                         value = {this.state.credentials.location}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
                         name = 'phoneNumber'
                         placeholder = 'Phone Number'
                         type = 'text'
                         value = {this.state.credentials.phoneNumber}
                         onChange = {this.handleRegisterChange}
                     />
-                     <input 
+                    <input 
                         name = 'picture'
                         placeholder = 'Profile Picture'
                         type = 'text'
@@ -92,6 +112,7 @@ class Register extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    isRegistered: state.isRegistered,
     error: state.error,
 })
 

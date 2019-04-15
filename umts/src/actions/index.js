@@ -80,15 +80,71 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
+export const addItem = (item) => dispatch => {
+    dispatch({ type: ADD_ITEM })
+    // insert axiosWithAuth here for protected endpoints
+    return axios
+        .post('', item)
+        .then(response => {
+            console.log(response.data);
+            dispatch({ type: ADD_ITEM_SUCCESS, payload: response.data })
+        })
+        .catch(err => {
+            dispatch({ type: ADD_ITEM_FAILURE, payload: err })
+        })
+}
+
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
+
+export const deleteItem = (id) => dispatch => {
+    dispatch({ type: DELETE_ITEM })
+    // insert axiosWithAuth here for protected endpoints
+    return axios
+        .delete(`/${id}`)
+        .then(response => {
+            console.log(response.data);
+            dispatch({ type: DELETE_ITEM_SUCCESS, payload: response.data })
+        })
+        .catch(err => {
+            dispatch({ type: DELETE_ITEM_FAILURE, payload: err })
+        })
+}
 
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
 
+export const updateItem = (item) => dispatch => {
+    dispatch({ type: UPDATE_ITEM })
+    // insert axiosWithAuth here for protected endpoints
+    return axios
+        .put(`/${item.id}`)
+        .then(response => {
+            console.log(response.data);
+            dispatch({ type: UPDATE_ITEM_SUCCESS, payload: response.data })
+        })
+        .catch(err => {
+            dispatch({ type: UPDATE_ITEM_FAILURE, payload: err })
+        })
+}
+
 // Tech Item Comments Actions
 export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const ADD_COMMENTS_SUCCESS = 'ADD_COMMENTS_SUCCESS';
 export const ADD_COMMENTS_FAILURE = 'ADD_COMMENTS_FAILURE'
+
+export const addItem = (comment) => dispatch => {
+    dispatch({ type: ADD_COMMENTS })
+    // insert axiosWithAuth here for protected endpoints
+    return axios
+        .post('', comment)
+        .then(response => {
+            console.log(response.data);
+            dispatch({ type: ADD_COMMENTS_SUCCESS, payload: response.data })
+        })
+        .catch(err => {
+            dispatch({ type: ADD_COMMENTS_FAILURE, payload: err })
+        })
+}
