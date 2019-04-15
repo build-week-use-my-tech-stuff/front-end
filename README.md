@@ -1,5 +1,5 @@
 # Front-End
-Front-End Repo for Use-My-Tech-Stuff BuildWeek.
+Front-End Repo for Use-My-Tech-Stuff Build Week.
 
 potentially doing app contains Login, Register, UserHome
 App has links to home, Login, Register, and Protected(replace with User Home)
@@ -11,14 +11,19 @@ ItemList contains all the items, *****Clickable to expand 1 item to see all deta
 could contain link to ItemForm to separate components, then formsubmit function could push back to itemlist
 Users which displays all Users/their info.
 
-Styling Method:
+**Demo-User Info**
+    1user | pass
+
+**Styling Method:**
     Styled Components.
 
-https://usemytechstuff.herokuapp.com/
+**API**
+https://usemytech.herokuapp.com/
 
-End Points:
-    Login -> https://usemytechstuff.herokuapp.com/api/auth/login
-    Register -> https://usemytechstuff.herokuapp.com/api/auth/register
+**End Points:**
+
+    Login -> https://usemytech.herokuapp.com/api/auth/login
+    Register -> https://usemytech.herokuapp.com/api/auth/register
     Get Users ->
     Get Items ->
     Add Items ->
@@ -26,9 +31,10 @@ End Points:
     Update Items ->
     Add Comments ->
 
-Functions:
+**Functions:**
+
     Login -> Using Username and Password
-    Register -> able to create account and input username, password, email, first name,             last name, location, phone number, and a profile picture.
+    Register -> able to create account and input username, password, email, first name,last name, location, phone number, and a profile picture.
 
     Gets Item data -> gets the tech items
     Add Item -> Add a new item listing.

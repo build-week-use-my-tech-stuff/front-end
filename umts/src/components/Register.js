@@ -35,7 +35,8 @@ class Register extends React.Component {
                 email: '',
                 firstName: '',
                 lastName: '',
-                location: '',
+                country: '',
+                state: '',
                 phoneNumber: '',
                 picture: ''
             }
@@ -48,7 +49,7 @@ class Register extends React.Component {
         return(
             <div className = 'registerForm'>
                 <h1>Register Your Account</h1>
-                <form onSubmit = {this.register}>
+                <form >
                     <input 
                         className = 'input'
                         name = 'username'
@@ -91,10 +92,18 @@ class Register extends React.Component {
                     />
                     <input 
                         className = 'input'
-                        name = 'location'
-                        placeholder = 'Location'
+                        name = 'country'
+                        placeholder = 'Country'
                         type = 'text'
-                        value = {this.state.credentials.location}
+                        value = {this.state.credentials.country}
+                        onChange = {this.handleRegisterChange}
+                    />
+                    <input 
+                        className = 'input'
+                        name = 'state'
+                        placeholder = 'State'
+                        type = 'text'
+                        value = {this.state.credentials.state}
                         onChange = {this.handleRegisterChange}
                     />
                     <input 
@@ -114,7 +123,7 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                 </form>
-                <button className = 'actionBtn'>Register</button>
+                <button onClick={(e) => this.register(e)} className = 'actionBtn'>Register</button>
             </div>
         )
     } 
