@@ -24,7 +24,7 @@ class App extends Component {
               <Link to = '/login'>Login</Link>
               <Link to = '/register'>Register</Link>
               <Link to = '/protected'>Protected</Link>
-              <button className = 'logout'>Sign Out</button>
+              <button className = 'logout'>Logout</button>
             </div>
           </header>
           <Route 
