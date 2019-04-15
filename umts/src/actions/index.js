@@ -9,7 +9,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN })
     return axios
-        .post('/login', creds)
+        .post('https://usemytechstuff.herokuapp.com/api/auth/login', creds)
         .then(response => {
             localStorage.setItem('token', response.data.payload);
             dispatch({ type: LOGIN_SUCCESS, payload: response.data.payload })
@@ -28,7 +28,7 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const register = creds => dispatch => {
     dispatch({ type: REGISTER })
     return axios
-        .post('/register', creds)
+        .post('https://usemytechstuff.herokuapp.com/api/auth/register', creds)
         .then(response => {
             dispatch({ type: REGISTER_SUCCESS, payload: response.data.payload})
         })
@@ -80,7 +80,7 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
-export const addItem = (item) => dispatch => {
+export const addingItem = (item) => dispatch => {
     dispatch({ type: ADD_ITEM })
     // insert axiosWithAuth here for protected endpoints
     return axios

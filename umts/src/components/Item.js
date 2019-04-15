@@ -7,7 +7,7 @@ class Item extends React.Component {
     render(){
         return (
             <div>
-                <div>
+                {/* <div>
                     <img>{props.item.picture}</img>
                     <h1>{props.item.name}</h1>
                     <p>{props.item.seller}</p>
@@ -15,7 +15,7 @@ class Item extends React.Component {
                     <p>{props.item.description}</p>
                 </div>
                 <button onClick = {() => props.deleteItem(props.item.id)}>Delete Item</button>
-                <button onClick = {() => props.updateItem(props.item.id)}>Edit Item</button>
+                <button onClick = {() => props.updateItem(props.item.id)}>Edit Item</button> */}
             </div>
         )
     }

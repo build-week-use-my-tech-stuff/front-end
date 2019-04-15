@@ -13,3 +13,24 @@ Users which displays all Users/their info.
 
 Styling Method:
     Styled Components.
+
+https://usemytechstuff.herokuapp.com/
+
+End Points:
+    Login -> https://usemytechstuff.herokuapp.com/api/auth/login
+    Register -> https://usemytechstuff.herokuapp.com/api/auth/register
+    Get Users ->
+    Get Items ->
+    Add Items ->
+    Delete Items ->
+    Update Items ->
+    Add Comments ->
+
+Functions:
+    Login -> Using Username and Password
+    Register -> able to create account and input username, password, email, first name,             last name, location, phone number, and a profile picture.
+
+    Gets Item data -> gets the tech items
+    Add Item -> Add a new item listing.
+    Delete Item -> Delete an item listing.
+    Update Item -> Update an Item listing

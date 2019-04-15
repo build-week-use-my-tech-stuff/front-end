@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchingItems } from '../actions';
-// import Login from './components/Login';
-// import Register from './components/Register';
-// import PrivateRoute from './components/PrivateRoute';
-// import ItemList from './components/ItemList';
+// import { connect } from 'react-redux';
+// import { fetchingItems } from '../actions';
+import Login from './components/Login';
+import Register from './components/Register';
+import PrivateRoute from './components/PrivateRoute';
+import ItemList from './components/ItemList';
 
 class App extends Component {
   // componentDidMount() {
@@ -18,13 +17,15 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="App-header">
+          <header className="header">
             <p>Use-My-Tech-Stuff</p>
-            <Link to = '/'>Home</Link>
-            <Link to = '/login'>Login</Link>
-            <Link to = '/register'>Register</Link>
-            <Link to = '/protected'>Protected</Link>
-            <button>Sign Out</button>
+            <div className = 'navigation'>
+              <Link to = '/'>Home</Link>
+              <Link to = '/login'>Login</Link>
+              <Link to = '/register'>Register</Link>
+              <Link to = '/protected'>Protected</Link>
+              <button className = 'logout'>Sign Out</button>
+            </div>
           </header>
           <Route 
             path = '/login'
@@ -34,10 +35,10 @@ class App extends Component {
             path = '/register'
             component = {Register}
           />
-          <PrivateRoute 
+          {/* <PrivateRoute 
             exact path = '/protected'
             component = {ItemList}
-          />
+          /> */}
         </div>
       </Router>
     );

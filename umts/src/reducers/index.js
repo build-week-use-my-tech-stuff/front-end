@@ -1,12 +1,12 @@
 import {
     LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE,
     REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE,
-    FETCHING_USERS, FETCHING_USERS_SUCCESS, FETCHING_USERS_FAILURE,
+    // FETCHING_USERS, FETCHING_USERS_SUCCESS, FETCHING_USERS_FAILURE,
     FETCHING_ITEM, FETCHING_ITEM_SUCCESS, FETCHING_ITEM_FAILURE,
     DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE,
     UPDATE_ITEM, UPDATE_ITEM_SUCCESS, UPDATE_ITEM_FAILURE,
     ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE,
-    ADD_COMMENTS, ADD_COMMENTS_SUCCESS, ADD_COMMENTS_FAILURE, 
+    // ADD_COMMENTS, ADD_COMMENTS_SUCCESS, ADD_COMMENTS_FAILURE, 
 }
 from '../actions';
 
@@ -23,7 +23,7 @@ const initialState = {
     error: null,
 }
 
-export const itemListReducer = ( state = initialState, action ) => {
+const reducer = ( state = initialState, action ) => {
     switch(action.type) {
 // Login User Cases
         case LOGIN:
@@ -66,9 +66,9 @@ export const itemListReducer = ( state = initialState, action ) => {
                 error: action.payload
             }
 // Getting Users Data Cases
-        case FETCHING_USERS:
-        case FETCHING_USERS_SUCCESS:
-        case FETCHING_USERS_FAILURE:
+        // case FETCHING_USERS:
+        // case FETCHING_USERS_SUCCESS:
+        // case FETCHING_USERS_FAILURE:
 // Getting Item Data Cases
         case FETCHING_ITEM:
             return {
@@ -147,12 +147,13 @@ export const itemListReducer = ( state = initialState, action ) => {
                 error: null
             }
 // Adding Comment Cases
-        case ADD_COMMENTS:
-        case ADD_COMMENTS_SUCCESS:
-        case ADD_COMMENTS_FAILURE:
+        // case ADD_COMMENTS:
+        // case ADD_COMMENTS_SUCCESS:
+        // case ADD_COMMENTS_FAILURE:
 // Default Case
         default:
             return state;
-
     }
 }
+
+export default reducer;
