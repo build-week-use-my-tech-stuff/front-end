@@ -34,7 +34,8 @@ https://usemytech.herokuapp.com/
 **Functions:**
 
     Login -> Using Username and Password
-    Register -> able to create account and input username, password, email, first name,last name, location, phone number, and a profile picture.
+    Register -> able to create account and input username, password, 
+                email, first name,last name, location, phone number, and a profile picture.
 
     Gets Item data -> gets the tech items
     Add Item -> Add a new item listing.

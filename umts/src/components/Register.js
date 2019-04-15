@@ -2,16 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { register } from '../actions';
 
+
 class Register extends React.Component {
     state = {
         credentials: {
             username: '',
             password: '',
             email: '',
-            firstName: '',
-            lastName: '',
+            firstname: '',
+            lastname: '',
             location: '',
-            phoneNumber: '',
+            phonenumber: '',
             picture: ''
         }
     }
@@ -27,17 +28,23 @@ class Register extends React.Component {
 
     register = event => {
         event.preventDefault();
-        this.props.register(this.state.credentials);
+        this.props.register({
+            username: this.state.credentials.username, password: this.state.credentials.password,
+            email: this.state.credentials.email, firstname: this.state.credentials.firstname,
+            lastname: this.state.credentials.lastname, country: this.state.credentials.country,
+            state: this.state.credentials.state, phonenumber: this.state.credentials.phonenumber, 
+            picture: this.state.credentials.picture 
+        });
         this.setState({
             credentials: {
                 username: '',
                 password: '',
                 email: '',
-                firstName: '',
-                lastName: '',
+                firstname: '',
+                lastname: '',
                 country: '',
                 state: '',
-                phoneNumber: '',
+                phonenumber: '',
                 picture: ''
             }
         });
@@ -49,7 +56,7 @@ class Register extends React.Component {
         return(
             <div className = 'registerForm'>
                 <h1>Register Your Account</h1>
-                <form >
+                <form onSubmit={this.register}>
                     <input 
                         className = 'input'
                         name = 'username'
@@ -123,7 +130,7 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                 </form>
-                <button onClick={(e) => this.register(e)} className = 'actionBtn'>Register</button>
+                <button onClick = {this.register} className = 'actionBtn'>Register</button>
             </div>
         )
     } 

@@ -29,13 +29,15 @@ export const register = creds => dispatch => {
     dispatch({ type: REGISTER })
     axios
         .post('https://usemytech.herokuapp.com/api/auth/register', creds)
-        .then(response => {
-            dispatch({ type: REGISTER_SUCCESS, payload: response.data.payload})
+        .then(response => { 
+            console.log('response!', response);
+            dispatch({ type: REGISTER_SUCCESS, payload: response.data})
         })
         .catch(err => {
             dispatch({ type: REGISTER_FAILURE, payload: err })
         })
 }
+
 
 // Users Actions
 export const FETCHING_USERS = 'FETCHING_USERS';
