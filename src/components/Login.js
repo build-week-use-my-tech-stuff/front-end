@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions';
+import { LoginForm, Inputs, ActionBtn } from './StyledComponents';
 
 class Login extends React.Component {
     state = {
         credentials: {
-            username: '1user',
+            username: 'LambdaGrad',
             password: 'pass'
         }
     };
@@ -21,17 +22,20 @@ class Login extends React.Component {
 
     login = event => {
         event.preventDefault();
-        this.props.login(this.state.credentials).then(() => {
-            this.props.history.push('/protected');
+        this.props.login({
+          username: this.state.credentials.username, 
+          password: this.state.credentials.password,
+          email: this.state.credentials.email}).then(() => {
+            this.props.history.push('/');
         })
     }
 
     render() {
         return (
-          <div className = 'form'>
+          <LoginForm className = 'form'>
             <h1>Login</h1>
             <form onSubmit={this.login}>
-              <input
+              <Inputs
                 className = 'input'
                 type='text'
                 name='username'
@@ -39,7 +43,7 @@ class Login extends React.Component {
                 onChange={(e) => {this.handleLoginChange(e)}}
                 value={this.state.credentials.username}
               />
-              <input
+              <Inputs
                 className = 'input'
                 type='password'
                 name='password'
@@ -47,9 +51,9 @@ class Login extends React.Component {
                 onChange={this.handleLoginChange}
                 value={this.state.credentials.password}
               />
-              <button className = 'actionBtn'>Log in</button>
+              <ActionBtn className = 'actionBtn'>Log in</ActionBtn>
             </form>
-          </div>
+          </LoginForm>
         );
       }
 }

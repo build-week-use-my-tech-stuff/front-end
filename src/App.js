@@ -1,45 +1,62 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { fetchingItems } from '../actions';
+import { connect } from 'react-redux';
+import { fetchingItems, logout } from './actions';
 import Login from './components/Login';
 import Register from './components/Register';
-import PrivateRoute from './components/PrivateRoute';
-import ItemList from './components/ItemList';
+// import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './components/Dashboard';
+import UserAccount from './components/UserAccount';
+import SignedIn from './components/navlinks/SignedIn';
+import SignedOut from './components/navlinks/SignedOut';
+import { AppHeader } from './components/StyledComponents';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchingItems();
+  }
+
+  logout = event => {
+    event.preventDefault();
+    this.props.logout();
+  }
 
   render() {
     return (
       <Router>
         <div className="App">
-          <header className="header">
+          <AppHeader className="header">
             <p>Use-My-Tech-Stuff</p>
-            <div className = 'navigation'>
-              <Link to = '/'>Home</Link>
-              <Link to = '/login'>Login</Link>
-              <Link to = '/register'>Register</Link>
-              <Link to = '/protected'>Tech Stuff</Link>
-              <button className = 'logout'>Logout</button>
-            </div>
-          </header>
+            {this.props.isLoggedIn ? <SignedIn logout = {this.logout}/> : <SignedOut /> }
+          </AppHeader>
           <Route 
-            path = '/login'
+            exact path = '/login'
             component = {Login}
           />
           <Route 
-            path = '/register'
+            exact path = '/register'
             component = {Register}
           />
-          {/* <PrivateRoute 
-            exact path = '/protected'
-            component = {ItemList}
-          /> */}
+          <Route 
+            exact path = '/'
+            component = {Dashboard}
+          />
+          <Route 
+            exact path = '/profile'
+            component = {UserAccount}
+          />
         </div>
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    tech: state.tech,
+    isLoggedIn: state.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps, { fetchingItems, logout })(App);

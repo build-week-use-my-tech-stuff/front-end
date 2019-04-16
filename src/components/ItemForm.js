@@ -1,20 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../actions';
+import { addingItem } from '../actions';
+import { ItemFormStyle, Inputs, ActionBtn } from './StyledComponents';
 
 class ItemForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            seller: '',
-            cost: '',
+            category: '',
             description: '',
             picture: '',
-            comments: [{
-                poster: '',
-                content: ''
-            }]
+            cost: '',
+            availability: true,
         }
     }
 
@@ -25,48 +23,63 @@ class ItemForm extends React.Component {
     }
 
     handleAddItem = event => {
+        console.log(this.props.user_id);
         // event.preventDefault();
-        let item = {...this.state}
-        this.props.addItem(item);
+        this.props.addingItem({
+            user_id: this.props.user_id, 
+            name: this.state.name, category: this.state.category,
+            description: this.state.description, picture: this.state.picture, 
+            cost: this.state.cost, availability: this.state.availability
+        });
         this.setState({
-
+            name: '',
+            category: '',
+            description: '',
+            picture: '',
+            cost: '',
+            availability: true,
         })
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit = {this.handleAddItem}>
-                    <input 
+            <ItemFormStyle>
+                <h1> Add an Item </h1>
+                <form>
+                    <Inputs
+                        className = 'input' 
                         type = 'text'
                         name = 'name'
                         placeholder = 'Item Name'
                         onChange = {this.handleAddChange}
                         value = {this.state.name}
                     />
-                    <input 
+                    <Inputs
+                        className = 'input' 
                         type = 'text'
-                        name = 'seller'
-                        placeholder = 'Username'
-                        /* look into how to auto-populate this field */
+                        name = 'category'
+                        placeholder = 'Category'
                         onChange = {this.handleAddChange}
-                        value = {this.state.XXX}
+                        value = {this.state.category}
                     />
-                    <input 
+                    <Inputs
+                        className = 'input' 
                         type = 'text'
                         name = 'cost'
                         placeholder = 'Cost To Rent'
                         onChange = {this.handleAddChange}
                         value = {this.state.cost}
                     />
-                    <input 
+                    <Inputs
+                        className = 'input' 
                         type = 'text'
                         name = 'description'
                         placeholder = 'Item Description'
                         onChange = {this.handleAddChange}
                         value = {this.state.description}
                     />
-                    <input 
+                    <Inputs
+                        className = 'input' 
                         type = 'text'
                         name = 'picture'
                         placeholder = 'Image URL'
@@ -74,15 +87,16 @@ class ItemForm extends React.Component {
                         value = {this.state.picture}
                     />
                 </form>
-                <button type = 'submit'>Add Item</button>
-            </div>
+                <ActionBtn onClick = {this.handleAddItem}>Add Item</ActionBtn>
+            </ItemFormStyle>
         )
     }
 }
 
 const mapStateToProps = state => ({
+    user_id: state.user_id,
     addingItem: state.addingItem,
     error: state.error
 })
 
-export default connect(mapStateToProps, { addItem })(ItemForm);
+export default connect(mapStateToProps, { addingItem })(ItemForm);
