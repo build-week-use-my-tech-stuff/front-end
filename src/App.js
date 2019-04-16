@@ -9,9 +9,6 @@ import PrivateRoute from './components/PrivateRoute';
 import ItemList from './components/ItemList';
 
 class App extends Component {
-  // componentDidMount() {
-  //   this.props.fetchingItems();
-  // }
 
   render() {
     return (
@@ -44,11 +41,5 @@ class App extends Component {
     );
   }
 }
-
-// function mapStateToProps({ rootReducer }) {
-//   return (
-
-//   )
-// }
 
 export default App;
