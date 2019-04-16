@@ -5,7 +5,7 @@ import { login } from '../actions';
 class Login extends React.Component {
     state = {
         credentials: {
-            username: '1user',
+            username: 'LambdaGrad',
             password: 'pass'
         }
     };

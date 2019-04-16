@@ -12,7 +12,7 @@ from '../actions';
 
 const initialState = {
     currentUser: {},
-    items: [],
+    tech: [],
     loggingIn: false,
     isRegistered: false,
     gettingItems: false,
@@ -79,7 +79,7 @@ const reducer = ( state = initialState, action ) => {
         case FETCHING_ITEM_SUCCESS:
             return {
                 ...state,
-                friends: action.payload,
+                tech: action.payload,
                 gettingItems: false,
                 error: null,
             }

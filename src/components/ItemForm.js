@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../actions';
+import { addingItem } from '../actions';
 
 class ItemForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            seller: '',
+            user: '',
             cost: '',
             description: '',
             picture: '',
+            category: '',
+            availability: true,
             comments: [{
                 poster: '',
                 content: ''
@@ -27,46 +29,69 @@ class ItemForm extends React.Component {
     handleAddItem = event => {
         // event.preventDefault();
         let item = {...this.state}
-        this.props.addItem(item);
+        this.props.addingItem(item);
         this.setState({
-
+            name: '',
+            user: '',
+            cost: '',
+            description: '',
+            picture: '',
+            category: '',
+            availability: true,
+            comments: [{
+                poster: '',
+                content: ''
+            }]
         })
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit = {this.handleAddItem}>
-                    <input 
+            <div className = 'itemForm'>
+                <h1> Add an Item </h1>
+                <form>
+                    <input
+                        className = 'input' 
                         type = 'text'
                         name = 'name'
                         placeholder = 'Item Name'
                         onChange = {this.handleAddChange}
                         value = {this.state.name}
                     />
-                    <input 
+                    <input
+                        className = 'input' 
                         type = 'text'
-                        name = 'seller'
+                        name = 'user'
                         placeholder = 'Username'
-                        /* look into how to auto-populate this field */
                         onChange = {this.handleAddChange}
-                        value = {this.state.XXX}
+                        value = {this.state.user}
                     />
-                    <input 
+                    <input
+                        className = 'input' 
+                        type = 'text'
+                        name = 'category'
+                        placeholder = 'Item Name'
+                        onChange = {this.handleAddChange}
+                        value = {this.state.category}
+                    />
+                    <input
+                        className = 'input' 
                         type = 'text'
                         name = 'cost'
                         placeholder = 'Cost To Rent'
                         onChange = {this.handleAddChange}
                         value = {this.state.cost}
                     />
-                    <input 
+                    <input
+                        className = 'input' 
                         type = 'text'
                         name = 'description'
                         placeholder = 'Item Description'
                         onChange = {this.handleAddChange}
                         value = {this.state.description}
                     />
-                    <input 
+                    <input
+                        className = 'input' 
                         type = 'text'
                         name = 'picture'
                         placeholder = 'Image URL'
@@ -74,7 +99,7 @@ class ItemForm extends React.Component {
                         value = {this.state.picture}
                     />
                 </form>
-                <button type = 'submit'>Add Item</button>
+                <button className = 'actionBtn' onClick = {this.handleAddItem}>Add Item</button>
             </div>
         )
     }
@@ -85,4 +110,4 @@ const mapStateToProps = state => ({
     error: state.error
 })
 
-export default connect(mapStateToProps, { addItem })(ItemForm);
+export default connect(mapStateToProps, { addingItem })(ItemForm);

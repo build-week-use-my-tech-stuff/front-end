@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { fetchingItems } from '../actions';
 import Login from './components/Login';
 import Register from './components/Register';
-import PrivateRoute from './components/PrivateRoute';
-import ItemList from './components/ItemList';
+// import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './components/Dashboard';
 
 class App extends Component {
 
@@ -20,7 +18,7 @@ class App extends Component {
               <Link to = '/'>Home</Link>
               <Link to = '/login'>Login</Link>
               <Link to = '/register'>Register</Link>
-              <Link to = '/protected'>Tech Stuff</Link>
+              <Link to = '/protected'>Account</Link>
               <button className = 'logout'>Logout</button>
             </div>
           </header>
@@ -36,6 +34,10 @@ class App extends Component {
             exact path = '/protected'
             component = {ItemList}
           /> */}
+          <Route 
+            path = '/'
+            component = {Dashboard}
+          />
         </div>
       </Router>
     );

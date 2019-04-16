@@ -9,7 +9,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN })
     return axios
-        .post('https://usemytech.herokuapp.com/api/auth/login', creds)
+        .post('https://usemytechstuff.herokuapp.com/api/auth/login', creds)
         .then(response => {
             localStorage.setItem('token', response.data.payload);
             dispatch({ type: LOGIN_SUCCESS, payload: response.data.payload })
@@ -28,7 +28,7 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const register = creds => dispatch => {
     dispatch({ type: REGISTER })
     axios
-        .post('https://usemytech.herokuapp.com/api/auth/register', creds)
+        .post('https://usemytechstuff.herokuapp.com/api/auth/register', creds)
         .then(response => { 
             console.log('response!', response);
             dispatch({ type: REGISTER_SUCCESS, payload: response.data})
@@ -48,7 +48,7 @@ export const fetchingUsers = () => dispatch => {
     dispatch({ type: FETCHING_USERS })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        .get('')
+        // .get('https://usemytechstuff.herokuapp.com/api/')
         .then(response => {
             console.log(response.data);
             dispatch({ type: FETCHING_USERS_SUCCESS, payload: response.data })
@@ -67,7 +67,7 @@ export const fetchingItems = () => dispatch => {
     dispatch({ type: FETCHING_ITEM })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        .get('')
+        .get('https://usemytechstuff.herokuapp.com/api/tech')
         .then(response => {
             console.log(response.data);
             dispatch({ type: FETCHING_ITEM_SUCCESS, payload: response.data })
@@ -86,7 +86,7 @@ export const addingItem = (item) => dispatch => {
     dispatch({ type: ADD_ITEM })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        .post('', item)
+        .post('https://usemytechstuff.herokuapp.com/api/tech', item)
         .then(response => {
             console.log(response.data);
             dispatch({ type: ADD_ITEM_SUCCESS, payload: response.data })
@@ -104,7 +104,7 @@ export const deleteItem = (id) => dispatch => {
     dispatch({ type: DELETE_ITEM })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        .delete(`/${id}`)
+        .delete(`https://usemytechstuff.herokuapp.com/api/tech/:id`)
         .then(response => {
             console.log(response.data);
             dispatch({ type: DELETE_ITEM_SUCCESS, payload: response.data })
@@ -137,7 +137,7 @@ export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const ADD_COMMENTS_SUCCESS = 'ADD_COMMENTS_SUCCESS';
 export const ADD_COMMENTS_FAILURE = 'ADD_COMMENTS_FAILURE'
 
-export const addItem = (comment) => dispatch => {
+export const addingComment = (comment) => dispatch => {
     dispatch({ type: ADD_COMMENTS })
     // insert axiosWithAuth here for protected endpoints
     return axios
