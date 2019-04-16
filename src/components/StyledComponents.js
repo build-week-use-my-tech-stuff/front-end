@@ -65,6 +65,7 @@ export const ItemContainer = styled.div `
     border-radius: 15px;
     margin: auto;
     margin-bottom: 20px;
+    margin-top: 20px;
 `;
 
 // Add Item Form

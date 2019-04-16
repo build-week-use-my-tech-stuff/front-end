@@ -6,8 +6,8 @@ import { LoginForm, Inputs, ActionBtn } from './StyledComponents';
 class Login extends React.Component {
     state = {
         credentials: {
-            username: 'LambdaGrad',
-            password: 'pass'
+            username: 'Stevies',
+            password: '123'
         }
     };
 

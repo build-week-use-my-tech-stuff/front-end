@@ -12,7 +12,8 @@ class Register extends React.Component {
             email: '',
             firstname: '',
             lastname: '',
-            location: '',
+            country: '',
+            state: '',
             phonenumber: '',
             picture: ''
         }
@@ -83,7 +84,7 @@ class Register extends React.Component {
                     />
                     <Inputs 
                         className = 'input'
-                        name = 'firstName'
+                        name = 'firstname'
                         placeholder = 'First Name'
                         type = 'text'
                         value = {this.state.credentials.firstName}
@@ -91,7 +92,7 @@ class Register extends React.Component {
                     />
                     <Inputs 
                         className = 'input'
-                        name = 'lastName'
+                        name = 'lastname'
                         placeholder = 'Last Name'
                         type = 'text'
                         value = {this.state.credentials.lastName}
@@ -115,7 +116,7 @@ class Register extends React.Component {
                     />
                     <Inputs 
                         className = 'input'
-                        name = 'phoneNumber'
+                        name = 'phonenumber'
                         placeholder = 'Phone Number'
                         type = 'text'
                         value = {this.state.credentials.phoneNumber}

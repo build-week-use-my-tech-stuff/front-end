@@ -31,11 +31,11 @@ class App extends Component {
             {this.props.isLoggedIn ? <SignedIn logout = {this.logout}/> : <SignedOut /> }
           </AppHeader>
           <Route 
-            exact path = '/login'
+            path = '/login'
             component = {Login}
           />
           <Route 
-            exact path = '/register'
+            path = '/register'
             component = {Register}
           />
           <Route 
@@ -43,7 +43,7 @@ class App extends Component {
             component = {Dashboard}
           />
           <Route 
-            exact path = '/profile'
+            path = '/profile'
             component = {UserAccount}
           />
         </div>
