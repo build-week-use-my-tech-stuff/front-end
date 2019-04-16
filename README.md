@@ -1,19 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 **Front-End Repo for Use-My-Tech-Stuff Build Week.**
 
 potentially doing app contains Login, Register, UserHome App has links to home, Login, Register, and Protected(replace with User Home) home can contain the header links along with mission statement or whatever. UserHome then contains link to Users and displaying component ItemList which contains all items. So login/register direct you to UserHome. UserHome displays all photos, while allowing navigation to Users. ItemList contains all the items, **Clickable to expand 1 item to see all details could contain link to ItemForm to separate components, then formsubmit function could push back to itemlist Users which displays all Users/their info.
 
-**Demo-User Info** 1user | pass
+**Demo-User Info:** 1user | pass
 
 **Styling Method:** Styled Components.
 
