@@ -23,11 +23,11 @@ class App extends Component {
             </div>
           </header>
           <Route 
-            path = '/login'
+            exact path = '/login'
             component = {Login}
           />
           <Route 
-            path = '/register'
+            exact path = '/register'
             component = {Register}
           />
           {/* <PrivateRoute 
@@ -35,7 +35,7 @@ class App extends Component {
             component = {ItemList}
           /> */}
           <Route 
-            path = '/'
+            exact path = '/'
             component = {Dashboard}
           />
         </div>

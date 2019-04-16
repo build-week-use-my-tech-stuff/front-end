@@ -76,7 +76,9 @@
   background: lightgray;
   width: 600px;
   border: 3px solid black;
+  border-radius: 15px;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 .itemForm {
@@ -88,4 +90,10 @@
   margin: auto;
   margin-top: 50px;
   margin-bottom: 25px;
+}
+
+/* work on not distorting the pictures */
+.itemImg {
+  width: 300px;
+  height: 400px;
 }

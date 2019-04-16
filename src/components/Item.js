@@ -8,8 +8,7 @@ class Item extends React.Component {
         return (
             <div className = 'item'>
                 <div>
-                    {/* <img src = {this.props.items.picture}></img> */}
-                    {/* crazy error when i uncomment the image check with tommy */}
+                    <img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>
                     <h1>{this.props.item.name}</h1>
                     <p>{this.props.item.availability}</p>
                     <p>Item Category: {this.props.item.category}</p>
@@ -17,9 +16,9 @@ class Item extends React.Component {
                     <p>Cost: {this.props.item.cost}$/day</p>
                     <p>{this.props.item.description}</p>
                 </div>
-                {/* <button onClick = {() => props.deleteItem(props.item.id)}>Delete Item</button> */}
-                {/* <button onClick = {() => props.updateItem(props.item.id)}>Edit Item</button> */}
-                <button>rent</button>
+                <button className = 'actionBtn' onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</button>
+                <button className = 'actionBtn' onClick = {() => this.props.updateItem(this.props.item.id)}>Edit Item</button>
+                <button className = 'actionBtn' >Rent Item</button>
             </div>
         )
     }
