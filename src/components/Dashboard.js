@@ -23,10 +23,6 @@ class Dashboard extends React.Component {
                             key = {item.id}
                         />
                     ))}
-                    {/* <Comments 
-                        comments = {this.state.comments}
-                    /> */}
-                    {/* this goes here or in item.js, followed by a .map in comments.js to render the array of comments in comment  */}
                 </div>
             </div>
         )

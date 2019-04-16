@@ -7,6 +7,10 @@ import Login from './components/Login';
 import Register from './components/Register';
 // import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
+import UserAccount from './components/UserAccount';
+import SignedIn from './components/navlinks/SignedIn';
+import SignedOut from './components/navlinks/SignedOut';
+import { AppHeader } from './components/StyledComponents';
 
 class App extends Component {
   componentDidMount() {
@@ -22,16 +26,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="header">
+          <AppHeader className="header">
             <p>Use-My-Tech-Stuff</p>
-            <div className = 'navigation'>
-              <Link to = '/'>Dashboard</Link>
-              <Link to = '/login'>Login</Link>
-              <Link to = '/register'>Register</Link>
-              <Link to = '/protected'>Account</Link>
-              <button className = 'logout' onClick = {this.logout}>Logout</button>
-            </div>
-          </header>
+            {this.props.isLoggedIn ? <SignedIn logout = {this.logout}/> : <SignedOut /> }
+          </AppHeader>
           <Route 
             exact path = '/login'
             component = {Login}
@@ -44,6 +42,10 @@ class App extends Component {
             exact path = '/'
             component = {Dashboard}
           />
+          <Route 
+            exact path = '/profile'
+            component = {UserAccount}
+          />
         </div>
       </Router>
     );
@@ -53,6 +55,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     tech: state.tech,
+    isLoggedIn: state.isLoggedIn
   }
 }
 

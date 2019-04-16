@@ -13,7 +13,7 @@ export const login = creds => dispatch => {
         .then(response => {
             console.log('response', response.data);
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user_id', response.data.user_id);
+            // localStorage.setItem('user_id', response.data.user_id);
             dispatch({ type: LOGIN_SUCCESS, payload: response.data })
         })
         .catch(err => {
@@ -39,7 +39,8 @@ export const register = creds => dispatch => {
     axios
         .post('https://usemytechstuff.herokuapp.com/api/auth/register', creds)
         .then(response => { 
-            console.log('response!', response.data);
+            console.log('register!', response.data);
+            console.log('register ID', response.data.id);
             dispatch({ type: REGISTER_SUCCESS, payload: response.data})
         })
         .catch(err => {
@@ -115,7 +116,7 @@ export const deleteItem = (id) => dispatch => {
     return axios
         .delete(`https://usemytechstuff.herokuapp.com/api/tech/${id}`)
         .then(response => {
-            console.log('this is the delete', response);
+            console.log('this is the delete', response.data);
             dispatch({ type: DELETE_ITEM_SUCCESS, payload: response.data })
         })
         .catch(err => {
@@ -131,7 +132,7 @@ export const updateItem = (item) => dispatch => {
     dispatch({ type: UPDATE_ITEM })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        .put(`/${item.id}`)
+        .put(`https://usemytechstuff.herokuapp.com/api/tech/${item.id}`, item)
         .then(response => {
             console.log(response.data);
             dispatch({ type: UPDATE_ITEM_SUCCESS, payload: response.data })

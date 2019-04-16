@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.header {
+/* .header {
   background: lightgray;
   padding: 10px;
   border-bottom: 3px solid black;
@@ -10,15 +10,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
-.header p {
+/* .header p {
   font-size: 20px;
   font-weight: bold;
   margin-left: 30px;
-}
+} */
 
-.navigation a {
+/* .navigation a {
   margin-right: 15px;
   font-size: 18px;
   border: 1px solid black;
@@ -26,18 +26,18 @@
   padding: 10px;
   background-color: maroon;
   color: white;
-}
+} */
 
-.navigation button {
+/* .navigation button {
   font-size: 18px;
   padding: 12px;
   border-radius: 15px;
   background-color: white;
   position: relative;
   top: -2.8px;
-}
+} */
 
-.form {
+/* .form {
   background: lightgray;
   width: 350px;
   height: 300px;
@@ -45,9 +45,9 @@
   border-radius: 25px;
   margin: auto;
   margin-top: 50px;
-}
+} */
 
-.registerForm{
+/* .registerForm{
   background: lightgray;
   width: 400px;
   height: 600px;
@@ -55,16 +55,16 @@
   border-radius: 25px;
   margin: auto;
   margin-top: 50px;
-}
+} */
 
-.input {
+/* .input {
   width: 80%;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 5px;
-}
+} */
 
-.actionBtn {
+/* .actionBtn {
   width: 88%;
   font-weight: bold;
   font-size: 16px;
@@ -92,10 +92,10 @@
   margin: auto;
   margin-top: 50px;
   margin-bottom: 25px;
-}
+} */
 
-/* work on not distorting the pictures */
+/* work on not distorting the pictures
 .itemImg {
   width: 300px;
   height: 400px;
-}
+} */

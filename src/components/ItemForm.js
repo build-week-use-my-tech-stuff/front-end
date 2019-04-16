@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addingItem } from '../actions';
+import { ItemFormStyle, Inputs, ActionBtn } from './StyledComponents';
 
 class ItemForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            user_id: localStorage.getItem('user_id'),
             category: '',
             description: '',
             picture: '',
@@ -23,9 +23,10 @@ class ItemForm extends React.Component {
     }
 
     handleAddItem = event => {
+        console.log(this.props.user_id);
         // event.preventDefault();
         this.props.addingItem({
-            user_id: localStorage.getItem('user_id'), 
+            user_id: this.props.user_id, 
             name: this.state.name, category: this.state.category,
             description: this.state.description, picture: this.state.picture, 
             cost: this.state.cost, availability: this.state.availability
@@ -42,10 +43,10 @@ class ItemForm extends React.Component {
 
     render() {
         return (
-            <div className = 'itemForm'>
+            <ItemFormStyle>
                 <h1> Add an Item </h1>
                 <form>
-                    <input
+                    <Inputs
                         className = 'input' 
                         type = 'text'
                         name = 'name'
@@ -53,7 +54,7 @@ class ItemForm extends React.Component {
                         onChange = {this.handleAddChange}
                         value = {this.state.name}
                     />
-                    <input
+                    <Inputs
                         className = 'input' 
                         type = 'text'
                         name = 'category'
@@ -61,7 +62,7 @@ class ItemForm extends React.Component {
                         onChange = {this.handleAddChange}
                         value = {this.state.category}
                     />
-                    <input
+                    <Inputs
                         className = 'input' 
                         type = 'text'
                         name = 'cost'
@@ -69,7 +70,7 @@ class ItemForm extends React.Component {
                         onChange = {this.handleAddChange}
                         value = {this.state.cost}
                     />
-                    <input
+                    <Inputs
                         className = 'input' 
                         type = 'text'
                         name = 'description'
@@ -77,7 +78,7 @@ class ItemForm extends React.Component {
                         onChange = {this.handleAddChange}
                         value = {this.state.description}
                     />
-                    <input
+                    <Inputs
                         className = 'input' 
                         type = 'text'
                         name = 'picture'
@@ -86,8 +87,8 @@ class ItemForm extends React.Component {
                         value = {this.state.picture}
                     />
                 </form>
-                <button className = 'actionBtn' onClick = {this.handleAddItem}>Add Item</button>
-            </div>
+                <ActionBtn onClick = {this.handleAddItem}>Add Item</ActionBtn>
+            </ItemFormStyle>
         )
     }
 }

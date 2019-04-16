@@ -5,13 +5,14 @@ import {
     FETCHING_ITEM, FETCHING_ITEM_SUCCESS, FETCHING_ITEM_FAILURE,
     DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE,
     UPDATE_ITEM, UPDATE_ITEM_SUCCESS, UPDATE_ITEM_FAILURE,
-    ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE,
+    ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE, LOGOUT_SUCCESS,
     // ADD_COMMENTS, ADD_COMMENTS_SUCCESS, ADD_COMMENTS_FAILURE, 
 }
 from '../actions';
 
 const initialState = {
     tech: [],
+    // userItems: [],
     loggingIn: false,
     isLoggedIn: false,
     isRegistered: false,
@@ -40,13 +41,28 @@ const reducer = ( state = initialState, action ) => {
                 loggingIn: false,
                 isLoggedIn: true,
                 error: null,
-                user_id: action.payload.user_id
+                user_id: action.payload.user_id,
+                // userItems: [...state.tech.filter(item => item.user_id.toString() === state.user_id.toString())]
             }
         case LOGIN_FAILURE:
             return {
                 ...state,
                 loggingIn: false,
                 error: action.payload
+            }
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                loggingIn: false,
+                isLoggedIn: false,
+                isRegistered: false,
+                gettingItems: false,
+                addingItem: false,
+                deletingItem: false,
+                updatingItem: false,
+                addingComment: false,
+                error: null,
+                user_id: null
             }
 // Register User Cases
         case REGISTER:
@@ -61,7 +77,8 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 isRegistered: false,
                 isLoggedIn: true,
-                user_id: action.payload.user_id,
+                user_id: action.payload.id,
+                // userItems: [...state.tech.filter(item => item.user_id.toString() === state.user_id.toString())],
                 error: null,
             }
         case REGISTER_FAILURE:
@@ -125,7 +142,7 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 deletingItem: false,
-                tech: [...state.tech.filter(item => item !== action.payload.id)],
+                tech: [...state.tech.filter(item => item.id.toString() !== action.payload.toString())],
                 error: null
             }
         case DELETE_ITEM_FAILURE:
@@ -146,7 +163,7 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 updatingItem: false,
                 tech: [...state.tech.map(item => {
-                    if(item.id === action.payload.id) {
+                    if(item.id === action.payload) {
                         item = action.payload
                         return item;
                     }

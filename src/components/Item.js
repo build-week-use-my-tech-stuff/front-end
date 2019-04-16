@@ -1,24 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteItem, updateItem } from '../actions';
+import { ItemContainer, ActionBtn, Img } from './StyledComponents';
 
 class Item extends React.Component {
 
     render(){
         return (
-            <div className = 'item'>
+            <ItemContainer>
                 <div>
-                    <img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>
+                    <Img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>
                     <h1>{this.props.item.name}</h1>
                     <p>Item Category: {this.props.item.category}</p>
                     <p>Lender: {this.props.item.user}</p>
                     <p>Cost: {this.props.item.cost}$/day</p>
                     <p>{this.props.item.description}</p>
                 </div>
-                <button className = 'actionBtn' onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</button>
-                <button className = 'actionBtn' onClick = {() => this.props.updateItem(this.props.item.id)}>Edit Item</button>
-                <button className = 'actionBtn' >Rent Item</button>
-            </div>
+                <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn>
+                <ActionBtn onClick = {() => this.props.updateItem(this.props.item.id)}>Edit Item</ActionBtn>
+                <ActionBtn>Rent Item</ActionBtn>
+                {/* <Comment comments = {this.props.item.comments} /> */}
+            </ItemContainer>
         )
     }
 }
