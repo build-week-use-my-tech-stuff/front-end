@@ -16,7 +16,6 @@ potentially doing app contains Login, Register, UserHome App has links to home, 
 
     Post Login -> https://usemytechstuff.herokuapp.com/api/auth/register
     Post Register -> https://usemytechstuff.herokuapp.com/api/auth/login
-    Get Users ->
     Get Items -> https://usemytechstuff.herokuapp.com/api/tech
     Add Items -> https://usemytechstuff.herokuapp.com/api/tech
     Delete Items -> https://usemytechstuff.herokuapp.com/api/tech

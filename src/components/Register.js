@@ -48,8 +48,7 @@ class Register extends React.Component {
                 picture: ''
             }
         });
-// Pushing to protected rather than to login here.
-        this.props.history.push('/protected')
+        this.props.history.push('/')
     };
 
     render() {

@@ -7,16 +7,12 @@ class ItemForm extends React.Component {
         super(props);
         this.state = {
             name: '',
-            user: '',
-            cost: '',
+            user_id: localStorage.getItem('user_id'),
+            category: '',
             description: '',
             picture: '',
-            category: '',
+            cost: '',
             availability: true,
-            comments: [{
-                poster: '',
-                content: ''
-            }]
         }
     }
 
@@ -28,20 +24,19 @@ class ItemForm extends React.Component {
 
     handleAddItem = event => {
         // event.preventDefault();
-        let item = {...this.state}
-        this.props.addingItem(item);
+        this.props.addingItem({
+            user_id: localStorage.getItem('user_id'), 
+            name: this.state.name, category: this.state.category,
+            description: this.state.description, picture: this.state.picture, 
+            cost: this.state.cost, availability: this.state.availability
+        });
         this.setState({
             name: '',
-            user: '',
-            cost: '',
+            category: '',
             description: '',
             picture: '',
-            category: '',
+            cost: '',
             availability: true,
-            comments: [{
-                poster: '',
-                content: ''
-            }]
         })
     }
 
@@ -61,16 +56,8 @@ class ItemForm extends React.Component {
                     <input
                         className = 'input' 
                         type = 'text'
-                        name = 'user'
-                        placeholder = 'Username'
-                        onChange = {this.handleAddChange}
-                        value = {this.state.user}
-                    />
-                    <input
-                        className = 'input' 
-                        type = 'text'
                         name = 'category'
-                        placeholder = 'Item Name'
+                        placeholder = 'Category'
                         onChange = {this.handleAddChange}
                         value = {this.state.category}
                     />
@@ -106,6 +93,7 @@ class ItemForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    user_id: state.user_id,
     addingItem: state.addingItem,
     error: state.error
 })

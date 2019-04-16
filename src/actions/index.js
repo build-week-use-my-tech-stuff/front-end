@@ -11,13 +11,22 @@ export const login = creds => dispatch => {
     return axios
         .post('https://usemytechstuff.herokuapp.com/api/auth/login', creds)
         .then(response => {
-            localStorage.setItem('token', response.data.payload);
-            dispatch({ type: LOGIN_SUCCESS, payload: response.data.payload })
+            console.log('response', response.data);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user_id', response.data.user_id);
+            dispatch({ type: LOGIN_SUCCESS, payload: response.data })
         })
         .catch(err => {
             dispatch({ type: LOGIN_FAILURE, payload: err })
         })
 
+}
+
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
+export const logout = () => {
+    localStorage.removeItem('token');
+    return({ type: LOGOUT_SUCCESS })
 }
 
 // Register Actions
@@ -30,7 +39,7 @@ export const register = creds => dispatch => {
     axios
         .post('https://usemytechstuff.herokuapp.com/api/auth/register', creds)
         .then(response => { 
-            console.log('response!', response);
+            console.log('response!', response.data);
             dispatch({ type: REGISTER_SUCCESS, payload: response.data})
         })
         .catch(err => {
@@ -40,6 +49,7 @@ export const register = creds => dispatch => {
 
 
 // Users Actions
+// Stretch
 export const FETCHING_USERS = 'FETCHING_USERS';
 export const FETCHING_USERS_SUCCESS = 'FETCHING_USERS_SUCCESS';
 export const FETCHING_USERS_FAILURE = 'FETCHING_USERS_FAILURE';
@@ -84,7 +94,6 @@ export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
 export const addingItem = (item) => dispatch => {
     dispatch({ type: ADD_ITEM })
-    // insert axiosWithAuth here for protected endpoints
     return axios
         .post('https://usemytechstuff.herokuapp.com/api/tech', item)
         .then(response => {
@@ -104,9 +113,9 @@ export const deleteItem = (id) => dispatch => {
     dispatch({ type: DELETE_ITEM })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        .delete(`https://usemytechstuff.herokuapp.com/api/tech/:id`)
+        .delete(`https://usemytechstuff.herokuapp.com/api/tech/${id}`)
         .then(response => {
-            console.log(response.data);
+            console.log('this is the delete', response);
             dispatch({ type: DELETE_ITEM_SUCCESS, payload: response.data })
         })
         .catch(err => {

@@ -10,7 +10,6 @@ class Item extends React.Component {
                 <div>
                     <img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>
                     <h1>{this.props.item.name}</h1>
-                    <p>{this.props.item.availability}</p>
                     <p>Item Category: {this.props.item.category}</p>
                     <p>Lender: {this.props.item.user}</p>
                     <p>Cost: {this.props.item.cost}$/day</p>

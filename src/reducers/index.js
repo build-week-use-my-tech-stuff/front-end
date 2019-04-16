@@ -11,9 +11,9 @@ import {
 from '../actions';
 
 const initialState = {
-    currentUser: {},
     tech: [],
     loggingIn: false,
+    isLoggedIn: false,
     isRegistered: false,
     gettingItems: false,
     addingItem: false,
@@ -21,6 +21,7 @@ const initialState = {
     updatingItem: false,
     addingComment: false,
     error: null,
+    user_id: null,
 }
 
 const reducer = ( state = initialState, action ) => {
@@ -37,7 +38,9 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 loggingIn: false,
+                isLoggedIn: true,
                 error: null,
+                user_id: action.payload.user_id
             }
         case LOGIN_FAILURE:
             return {
@@ -57,6 +60,8 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 isRegistered: false,
+                isLoggedIn: true,
+                user_id: action.payload.user_id,
                 error: null,
             }
         case REGISTER_FAILURE:
@@ -100,6 +105,7 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 addingItem: false,
+                tech: [...state.tech, action.payload],
                 error: null
             }
         case ADD_ITEM_FAILURE:
@@ -119,6 +125,7 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 deletingItem: false,
+                tech: [...state.tech.filter(item => item !== action.payload.id)],
                 error: null
             }
         case DELETE_ITEM_FAILURE:
@@ -138,6 +145,12 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 updatingItem: false,
+                tech: [...state.tech.map(item => {
+                    if(item.id === action.payload.id) {
+                        item = action.payload
+                        return item;
+                    }
+                })],
                 error: null,
             }
         case UPDATE_ITEM_FAILURE:
