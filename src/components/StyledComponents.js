@@ -71,7 +71,7 @@ export const ItemContainer = styled.div `
     margin-bottom: 20px;
     margin-top: 20px;
 
-    .rented {
+    ${ItemContainer} .rented {
         color: red,
     }
 `;
@@ -92,4 +92,14 @@ export const ItemFormStyle = styled.div `
 export const Img = styled.img `
     width: 300px;
     height: 400px;
+`;
+
+export const AccountItem = styled.div `
+    background: lightgray;
+    width: 600px;
+    border: 3px solid black;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 `;

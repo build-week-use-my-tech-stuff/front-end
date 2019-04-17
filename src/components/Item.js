@@ -4,14 +4,22 @@ import { deleteItem, updateItem } from '../actions';
 import { ItemContainer, ActionBtn, Img, Inputs } from './StyledComponents';
 
 class Item extends React.Component {
-    state = {
-        availability: true,
-        editing: false,
-        newName: this.props.name,
-        newCategory: this.props.category,
-        newCost: this.props.cost,
-        newDescription: this.props.description
+    
+    constructor(props){
+        super(props);
+        console.log("looking for items", this.props.item);
+        this.state = {
+            availability: true,
+            editing: false,
+            newName: this.props.item.name, //changed from this.props.name
+            newCategory: this.props.item.category,  //changed from this.props.category
+            newCost: this.props.item.cost, //changed from this.props.cost
+            newDescription: this.props.item.description, //changed from this.props.description
+            user: this.props.item.user,
+            id: this.props.item.id
+        }
     }
+    
 
     handleEdits = event => {
         this.setState({
@@ -19,28 +27,39 @@ class Item extends React.Component {
         })
     }
 
-    handleUpdate = event => {
-        event.preventDefault();
-        this.props.updateItem(this.state.newName)
+
+    handleUpdate = (id) => {
+        console.log('update: id!', id);
+        this.props.updateItem(id,
+            {id: this.props.item.id,
+            name: this.state.newName, 
+            category: this.state.newCategory,
+            description: this.state.newDescription,  
+            cost: this.state.newCost});
         this.setState({ editing: false })
+        
     }
 
-    toggleRent= event => {
-        let rentable = !this.state.availability
-        console.log('toggling!', rentable);
-        this.setState({
-            availability: rentable
-        })
-    }
-
-    toggleRented = event => {
-        this.props.updateItem()
+    toggleRented =(id) => {
+        this.props.updateItem(id)
         this.setState({
             availability: false
         })
     }
 
+    toggleEdits = event => {
+        this.setState({
+            editing: true
+        })
+    }
+
     render(){
+        // console.table(this.props.item)
+        let editBtn = 'Edit Item';
+        this.state.editing ? editBtn = 'Submit Update' : editBtn = 'Edit Item';
+        let editBtnFunction = this.handleUpdate; 
+        this.state.editing ? editBtnFunction = this.handleUpdate : editBtnFunction = this.toggleEdits;
+        console.log('props?',this.props);
         return (
             <ItemContainer>
                 <div>
@@ -50,11 +69,10 @@ class Item extends React.Component {
                         <Inputs 
                             type = 'text'
                             name = 'newName'
-                            placeholder = {this.props.name}
+                            placeholder = {this.props.item.name}
                             value = {this.state.newName}
                             onChange = {this.handleEdits}
                         />
-                        <button onClick = {this.handleUpdate}>Update</button>
                     </div>                    
                     )}
                     {!this.state.editing ? (<p>Category: {this.props.item.category}</p>) : 
@@ -62,35 +80,33 @@ class Item extends React.Component {
                         <Inputs 
                             type = 'text'
                             name = 'newCategory'
-                            placeholder = {this.props.category}
+                            placeholder = {this.props.item.category}
                             value = {this.state.newCategory}
                             onChange = {this.handleEdits}
                         />
-                        <button onClick = {this.handleUpdate}>Update</button>
                     </div>                    
                     )}
-                    {!this.state.editing ? (<p>Lender: {this.props.item.user}</p>) : 
+                    {/* {!this.state.editing ? (<p>Lender: {this.props.item.user}</p>) : 
                     (<div> 
                         <Inputs 
                             type = 'text'
                             name = 'newUser'
-                            placeholder = {this.props.user}
+                            placeholder = {this.props.item.user}
                             value = {this.state.newUser}
                             onChange = {this.handleEdits}
                         />
-                        <button onClick = {this.handleUpdate}>Update</button>
                     </div>                    
-                    )}
+                    )} */}
+                    <p> Lender: {this.props.item.user} </p>
                     {!this.state.editing ? (<p>Cost: {this.props.item.cost}$/day</p>) : 
                     (<div> 
                         <Inputs 
                             type = 'text'
                             name = 'newCost'
-                            placeholder = {this.props.cost}
+                            placeholder = {this.props.item.cost}
                             value = {this.state.newCost}
                             onChange = {this.handleEdits}
                         />
-                        <button onClick = {this.handleUpdate}>Update</button>
                     </div>                    
                     )}
                     {!this.state.editing ? (<p>{this.props.item.description}</p>) : 
@@ -98,18 +114,16 @@ class Item extends React.Component {
                         <Inputs 
                             type = 'text'
                             name = 'newDescription'
-                            placeholder = {this.props.description}
+                            placeholder = {this.props.item.description}
                             value = {this.state.newDescription}
                             onChange = {this.handleEdits}
                         />
-                        <button onClick = {this.handleUpdate}>Update</button>
                     </div>                    
                     )}
                 </div>
                 {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
-                {/* {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.props.updateItem(this.props.item.id)}>Edit Item</ActionBtn> : null} */}
-                {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.setState({ editing: true })}>Edit Item</ActionBtn> : null}
-                {this.state.availability ? <ActionBtn onClick = {this.toggleRent}>Rent Item</ActionBtn> : <p className = 'rented'>This Item Has Been Rented</p>}
+                {this.props.isLoggedIn ? <ActionBtn onClick = {()=> editBtnFunction(this.props.item.id)}>{editBtn}</ActionBtn> : null}
+                {this.state.availability ? <ActionBtn onClick = {() =>this.toggleRented(this.props.item.id)}>Rent Item</ActionBtn> : <p className = 'rented'>This Item Has Been Rented</p>}
                 {/* <Comment comments = {this.props.item.comments} /> */}
             </ItemContainer>
         )

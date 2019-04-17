@@ -19,7 +19,6 @@
     Add Items -> https://usemytechstuff.herokuapp.com/api/tech
     Delete Items -> https://usemytechstuff.herokuapp.com/api/tech
     Update Items -> https://usemytechstuff.herokuapp.com/api/tech
-    Add Comments ->
 
 **Functions:**
 

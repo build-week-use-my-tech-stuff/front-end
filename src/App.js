@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchingItems, logout } from './actions';
 import Login from './components/Login';
 import Register from './components/Register';
-// import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
 import UserAccount from './components/UserAccount';
 import SignedIn from './components/navlinks/SignedIn';
@@ -18,9 +16,8 @@ class App extends Component {
   }
 
   logout = event => {
-    event.preventDefault();
     this.props.logout();
-    // this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render() {

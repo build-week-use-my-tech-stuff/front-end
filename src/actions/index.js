@@ -57,14 +57,12 @@ export const register = creds => dispatch => {
 
 
 // Users Actions
-// Stretch
 export const FETCHING_USERS = 'FETCHING_USERS';
 export const FETCHING_USERS_SUCCESS = 'FETCHING_USERS_SUCCESS';
 export const FETCHING_USERS_FAILURE = 'FETCHING_USERS_FAILURE';
 
 export const fetchingUser = (id) => dispatch => {
     dispatch({ type: FETCHING_USERS })
-    // insert axiosWithAuth here for protected endpoints
     return axios
         .get(`https://usemytechstuff.herokuapp.com/api/users/${id}`)
         .then(response => {
@@ -83,7 +81,6 @@ export const FETCHING_ITEM_FAILURE = 'FETCHING_ITEM_FAILURE';
 
 export const fetchingItems = () => dispatch => {
     dispatch({ type: FETCHING_ITEM })
-    // insert axiosWithAuth here for protected endpoints
     return axios
         .get('https://usemytechstuff.herokuapp.com/api/tech')
         .then(response => {
@@ -135,13 +132,14 @@ export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
 
-export const updateItem = (item) => dispatch => {
+export const updateItem = (id, item) => dispatch => {
     dispatch({ type: UPDATE_ITEM })
     // insert axiosWithAuth here for protected endpoints
+    console.log("itemid", id);
     axiosWithAuth()
-        .put(`https://usemytechstuff.herokuapp.com/api/tech/${item.id}`, item)
+        .put(`https://usemytechstuff.herokuapp.com/api/tech/${id}`, item)
         .then(response => {
-            console.log(response.data);
+            console.log('this is the update', response.data);
             dispatch({ type: UPDATE_ITEM_SUCCESS, payload: response.data })
         })
         .catch(err => {
@@ -150,6 +148,7 @@ export const updateItem = (item) => dispatch => {
 }
 
 // Tech Item Comments Actions
+// Stretch
 export const ADD_COMMENTS = 'ADD_COMMENTS';
 export const ADD_COMMENTS_SUCCESS = 'ADD_COMMENTS_SUCCESS';
 export const ADD_COMMENTS_FAILURE = 'ADD_COMMENTS_FAILURE'

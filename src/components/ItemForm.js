@@ -44,7 +44,7 @@ class ItemForm extends React.Component {
     render() {
         return (
             <ItemFormStyle>
-                <h1> Add An Item </h1>
+                <h1> Create a New Listing </h1>
                 <form>
                     <Inputs 
                         type = 'text'
