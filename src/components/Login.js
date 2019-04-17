@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions';
 import { LoginForm, Inputs, ActionBtn } from './StyledComponents';
+import Loader from 'react-loader-spinner'
 
 class Login extends React.Component {
     state = {
@@ -33,7 +34,7 @@ class Login extends React.Component {
     render() {
         return (
           <LoginForm>
-            <h1>Login</h1>
+            <h1>Please Login</h1>
             <form onSubmit={this.login}>
               <Inputs
                 type='text'
@@ -49,7 +50,7 @@ class Login extends React.Component {
                 onChange={this.handleLoginChange}
                 value={this.state.credentials.password}
               />
-              <ActionBtn>Log in</ActionBtn>
+              <ActionBtn>{ this.props.loggingIn ? (<Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) : ('Login')}</ActionBtn>
             </form>
           </LoginForm>
         );
