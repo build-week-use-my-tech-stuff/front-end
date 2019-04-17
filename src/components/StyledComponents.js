@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const AppContainer = styled.div `
+    text-align: center;
+`;
+
 export const AppHeader = styled.div `
     background: black;
     padding: 10px;
@@ -66,6 +70,10 @@ export const ItemContainer = styled.div `
     margin: auto;
     margin-bottom: 20px;
     margin-top: 20px;
+
+    .rented {
+        color: red,
+    }
 `;
 
 // Add Item Form

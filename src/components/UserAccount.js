@@ -5,8 +5,8 @@ import { ItemContainer, Img } from '../components/StyledComponents';
 
 
 const UserAccount = props => {
-    console.log("tech!", props.tech);
-    console.log("tech!", props.user_id);
+    // console.log("tech!", props.tech);
+    // console.log("tech!", props.user_id);
     return (
         <div>
             <ItemContainer>
@@ -18,20 +18,20 @@ const UserAccount = props => {
                 <p>Country: {props.user.country}</p>
                 <p>State: {props.user.state}</p>
                 <p>Phone Number: {props.user.phonenumber}</p>
-                <img src = {props.user.picture} />
+                <img src = {props.user.picture} alt = 'profile'/>
             </ItemContainer>
 
-            <ItemContainer className = 'item'>
+            <ItemContainer>
                 {props.tech.map(item => {
                     if(item.user_id.toString() === props.user_id.toString()){
                         return (
                         <>
-                        <Img src = {item.picture} alt = 'rent item'/>
-                        <h3>{item.name}</h3>
-                        <p>Item Category: {item.category}</p>
-                        <p>Lender: {item.user}</p>
-                        <p>Cost: {item.cost}$/day</p>
-                        <p>{item.description}</p>
+                            <Img src = {item.picture} alt = 'rent item'/>
+                            <h3>{item.name}</h3>
+                            <p>Item Category: {item.category}</p>
+                            <p>Lender: {item.user}</p>
+                            <p>Cost: {item.cost}$/day</p>
+                            <p>{item.description}</p>
                         </>
                         )
                     }

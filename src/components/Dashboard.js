@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
         console.log('userID', this.props.user_id)
     return (
             <div>
-                <ItemForm />
+                {this.props.isLoggedIn ? <ItemForm /> : null}
                 <div>
                     {this.props.tech.map(item => (
                         <Item 
@@ -34,6 +34,7 @@ const mapStateToProps = state => {
         user_id: state.user_id,
         tech: state.tech,
         loggingIn: state.loggingIn,
+        isLoggedIn: state.isLoggedIn,
         error: state.error,
     }
 }

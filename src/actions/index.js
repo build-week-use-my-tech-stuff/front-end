@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import axiosWithAuth from '../utils/axiosAuth';
 
 // Login Actions
 export const LOGIN = 'LOGIN';
@@ -15,7 +14,6 @@ export const login = creds => dispatch => {
             console.log('login', response.data,);
             userID = response.data.user_id
             localStorage.setItem('token', response.data.token);
-            // localStorage.setItem('user_id', response.data.user_id);
             dispatch({ type: LOGIN_SUCCESS, payload: response.data })
             
         })

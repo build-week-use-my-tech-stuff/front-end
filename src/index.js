@@ -9,8 +9,9 @@ import reducer from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, /* preloadedState, */ composeEnhancers(applyMiddleware( thunk, logger)
+const store = createStore(reducer, composeEnhancers(applyMiddleware( thunk, logger)
 ));
+
 // const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(

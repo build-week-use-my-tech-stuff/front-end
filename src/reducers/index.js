@@ -13,7 +13,6 @@ from '../actions';
 const initialState = {
     tech: [],
     user: {},
-    // userItems: [],
     gettingUser: false,
     loggingIn: false,
     isLoggedIn: false,
