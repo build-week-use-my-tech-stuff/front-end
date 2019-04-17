@@ -1,7 +1,5 @@
 **Front-End Repo for Use-My-Tech-Stuff Build Week.**
 
-potentially doing app contains Login, Register, UserHome App has links to home, Login, Register, and Protected(replace with User Home) home can contain the header links along with mission statement or whatever. UserHome then contains link to Users and displaying component ItemList which contains all items. So login/register direct you to UserHome. UserHome displays all photos, while allowing navigation to Users. ItemList contains all the items, **Clickable to expand 1 item to see all details could contain link to ItemForm to separate components, then formsubmit function could push back to itemlist Users which displays all Users/their info.
-
 **Demo-User Info:** 
 
     techRenterGuy | pass
@@ -16,6 +14,7 @@ potentially doing app contains Login, Register, UserHome App has links to home, 
 
     Post Login -> https://usemytechstuff.herokuapp.com/api/auth/register
     Post Register -> https://usemytechstuff.herokuapp.com/api/auth/login
+    Get Users => https://usemytechstuff.herokuapp.com/api/users
     Get Items -> https://usemytechstuff.herokuapp.com/api/tech
     Add Items -> https://usemytechstuff.herokuapp.com/api/tech
     Delete Items -> https://usemytechstuff.herokuapp.com/api/tech

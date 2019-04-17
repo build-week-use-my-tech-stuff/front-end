@@ -12,7 +12,8 @@ class Register extends React.Component {
             email: '',
             firstname: '',
             lastname: '',
-            location: '',
+            country: '',
+            state: '',
             phonenumber: '',
             picture: ''
         }
@@ -54,11 +55,10 @@ class Register extends React.Component {
 
     render() {
         return(
-            <RegisterForm className = 'registerForm'>
+            <RegisterForm>
                 <h1>Register Your Account</h1>
-                <form onSubmit={this.register}>
+                <form>
                     <Inputs 
-                        className = 'input'
                         name = 'username'
                         placeholder = 'Username'
                         type = 'text'
@@ -66,15 +66,13 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
                         name = 'password'
                         placeholder = 'Password'
                         type = 'password'
                         value = {this.state.credentials.password}
                         onChange = {this.handleRegisterChange}
                     />
-                    <Inputs
-                        className = 'input' 
+                    <Inputs 
                         name = 'email'
                         placeholder = 'Email Address'
                         type = 'text'
@@ -82,23 +80,20 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
-                        name = 'firstName'
+                        name = 'firstname'
                         placeholder = 'First Name'
                         type = 'text'
                         value = {this.state.credentials.firstName}
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
-                        name = 'lastName'
+                        name = 'lastname'
                         placeholder = 'Last Name'
                         type = 'text'
                         value = {this.state.credentials.lastName}
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
                         name = 'country'
                         placeholder = 'Country'
                         type = 'text'
@@ -106,7 +101,6 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
                         name = 'state'
                         placeholder = 'State'
                         type = 'text'
@@ -114,15 +108,13 @@ class Register extends React.Component {
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
-                        name = 'phoneNumber'
+                        name = 'phonenumber'
                         placeholder = 'Phone Number'
                         type = 'text'
                         value = {this.state.credentials.phoneNumber}
                         onChange = {this.handleRegisterChange}
                     />
                     <Inputs 
-                        className = 'input'
                         name = 'picture'
                         placeholder = 'Profile Picture'
                         type = 'text'

@@ -1,32 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { ItemContainer, Img } from '../components/StyledComponents';
 
 
 const UserAccount = props => {
-    console.log("tech!", props.tech);
-    console.log("tech!", props.user_id);
     return (
         <div>
-            <div> 
-                <h1>Username: Patrick777</h1>
-                <p>Password: 1234</p>
-                <p>Email Address: 123@gmail.com</p>
-                <p>First Name: Patrick</p>
-            </div>
+            <ItemContainer>
+                <h1>My Account Information</h1>
+                <p>Username: {props.user.username}</p>
+                <p>Email Address: {props.user.email}</p>
+                <p>First Name: {props.user.firstname}</p>
+                <p>Last Name: {props.user.lastname}</p>
+                <p>Country: {props.user.country}</p>
+                <p>State: {props.user.state}</p>
+                <p>Phone Number: {props.user.phonenumber}</p>
+                <img src = {props.user.picture} alt = 'profile'/>
+            </ItemContainer>
 
-            <div className = 'item'>
+            <ItemContainer>
                 {props.tech.map(item => {
                     if(item.user_id.toString() === props.user_id.toString()){
                         return (
                         <>
-                        <h1>{item.name}</h1>
-                        <p>{item.description}</p>
+                            <Img src = {item.picture} alt = 'rent item'/>
+                            <h3>{item.name}</h3>
+                            <p>Item Category: {item.category}</p>
+                            <p>Lender: {item.user}</p>
+                            <p>Cost: {item.cost}$/day</p>
+                            <p>{item.description}</p>
                         </>
                         )
                     }
                 })}
-            </div>
+            </ItemContainer>
         </div>
     )
 }
@@ -34,7 +41,8 @@ const UserAccount = props => {
 const mapStateToProps = state => {
     return {
        tech: state.tech,
-       user_id: state.user_id 
+       user_id: state.user_id,
+       user: state.user 
     }
 }
 

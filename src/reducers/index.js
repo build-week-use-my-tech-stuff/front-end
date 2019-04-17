@@ -1,7 +1,7 @@
 import {
     LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE,
     REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE,
-    // FETCHING_USERS, FETCHING_USERS_SUCCESS, FETCHING_USERS_FAILURE,
+    FETCHING_USERS, FETCHING_USERS_SUCCESS, FETCHING_USERS_FAILURE,
     FETCHING_ITEM, FETCHING_ITEM_SUCCESS, FETCHING_ITEM_FAILURE,
     DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE,
     UPDATE_ITEM, UPDATE_ITEM_SUCCESS, UPDATE_ITEM_FAILURE,
@@ -12,7 +12,8 @@ from '../actions';
 
 const initialState = {
     tech: [],
-    // userItems: [],
+    user: {},
+    gettingUser: false,
     loggingIn: false,
     isLoggedIn: false,
     isRegistered: false,
@@ -50,6 +51,7 @@ const reducer = ( state = initialState, action ) => {
                 loggingIn: false,
                 error: action.payload
             }
+// Logout Case
         case LOGOUT_SUCCESS:
             return {
                 ...state,
@@ -63,6 +65,26 @@ const reducer = ( state = initialState, action ) => {
                 addingComment: false,
                 error: null,
                 user_id: null
+            }
+// Getting Users Data Cases
+        case FETCHING_USERS:
+            return {
+                ...state,
+                gettingUser: true,
+                error: null,
+            }
+        case FETCHING_USERS_SUCCESS:
+            return {
+                ...state,
+                gettingUser: false,
+                error: null,
+                user: action.payload
+            }
+        case FETCHING_USERS_FAILURE:
+            return {
+                ...state,
+                gettingUser: false,
+                error: action.payload
             }
 // Register User Cases
         case REGISTER:
@@ -87,10 +109,6 @@ const reducer = ( state = initialState, action ) => {
                 isRegistered: false,
                 error: action.payload
             }
-// Getting Users Data Cases
-        // case FETCHING_USERS:
-        // case FETCHING_USERS_SUCCESS:
-        // case FETCHING_USERS_FAILURE:
 // Getting Item Data Cases
         case FETCHING_ITEM:
             return {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchingItems, logout } from './actions';
 import Login from './components/Login';
@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard';
 import UserAccount from './components/UserAccount';
 import SignedIn from './components/navlinks/SignedIn';
 import SignedOut from './components/navlinks/SignedOut';
-import { AppHeader } from './components/StyledComponents';
+import { AppHeader, AppContainer } from './components/StyledComponents';
 
 class App extends Component {
   componentDidMount() {
@@ -25,17 +25,17 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <AppHeader className="header">
+        <AppContainer>
+          <AppHeader>
             <p>Use-My-Tech-Stuff</p>
             {this.props.isLoggedIn ? <SignedIn logout = {this.logout}/> : <SignedOut /> }
           </AppHeader>
           <Route 
-            exact path = '/login'
+            path = '/login'
             component = {Login}
           />
           <Route 
-            exact path = '/register'
+            path = '/register'
             component = {Register}
           />
           <Route 
@@ -43,10 +43,10 @@ class App extends Component {
             component = {Dashboard}
           />
           <Route 
-            exact path = '/profile'
+            path = '/profile'
             component = {UserAccount}
           />
-        </div>
+        </AppContainer>
       </Router>
     );
   }

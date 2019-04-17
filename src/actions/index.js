@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import axiosWithAuth from '../utils/axiosAuth';
 
 // Login Actions
 export const LOGIN = 'LOGIN';
@@ -8,17 +7,21 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN })
+    let userID = null;
     return axios
         .post('https://usemytechstuff.herokuapp.com/api/auth/login', creds)
         .then(response => {
-            console.log('response', response.data);
+            console.log('login', response.data,);
+            userID = response.data.user_id
             localStorage.setItem('token', response.data.token);
-            // localStorage.setItem('user_id', response.data.user_id);
             dispatch({ type: LOGIN_SUCCESS, payload: response.data })
+            
         })
+        .then(() => dispatch(fetchingUser(userID)))
         .catch(err => {
             dispatch({ type: LOGIN_FAILURE, payload: err })
         })
+        
 
 }
 
@@ -36,13 +39,16 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
 export const register = creds => dispatch => {
     dispatch({ type: REGISTER })
-    axios
+    let userID = null;
+    return axios
         .post('https://usemytechstuff.herokuapp.com/api/auth/register', creds)
         .then(response => { 
             console.log('register!', response.data);
+            userID = response.data.id;
             console.log('register ID', response.data.id);
             dispatch({ type: REGISTER_SUCCESS, payload: response.data})
         })
+        .then(() => dispatch(fetchingUser(userID)))
         .catch(err => {
             dispatch({ type: REGISTER_FAILURE, payload: err })
         })
@@ -55,11 +61,11 @@ export const FETCHING_USERS = 'FETCHING_USERS';
 export const FETCHING_USERS_SUCCESS = 'FETCHING_USERS_SUCCESS';
 export const FETCHING_USERS_FAILURE = 'FETCHING_USERS_FAILURE';
 
-export const fetchingUsers = () => dispatch => {
+export const fetchingUser = (id) => dispatch => {
     dispatch({ type: FETCHING_USERS })
     // insert axiosWithAuth here for protected endpoints
     return axios
-        // .get('https://usemytechstuff.herokuapp.com/api/')
+        .get(`https://usemytechstuff.herokuapp.com/api/users/${id}`)
         .then(response => {
             console.log(response.data);
             dispatch({ type: FETCHING_USERS_SUCCESS, payload: response.data })
