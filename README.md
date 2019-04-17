@@ -2,8 +2,8 @@
 
 **Demo-User Info:** 
 
+    Stevies | 123 (Working Register Request User)
     techRenterGuy | pass
-    sasha1010 | pass
     LambdaGrad | pass
 
 **Styling Method:** Styled Components.

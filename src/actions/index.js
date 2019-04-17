@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosWithAuth from '../utils/axiosAuth';
 
 // Login Actions
 export const LOGIN = 'LOGIN';
@@ -101,7 +102,7 @@ export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
 export const addingItem = (item) => dispatch => {
     dispatch({ type: ADD_ITEM })
-    return axios
+    axiosWithAuth()
         .post('https://usemytechstuff.herokuapp.com/api/tech', item)
         .then(response => {
             console.log(response.data);
@@ -119,7 +120,7 @@ export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
 export const deleteItem = (id) => dispatch => {
     dispatch({ type: DELETE_ITEM })
     // insert axiosWithAuth here for protected endpoints
-    return axios
+    axiosWithAuth()
         .delete(`https://usemytechstuff.herokuapp.com/api/tech/${id}`)
         .then(response => {
             console.log('this is the delete', response.data);
@@ -137,7 +138,7 @@ export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
 export const updateItem = (item) => dispatch => {
     dispatch({ type: UPDATE_ITEM })
     // insert axiosWithAuth here for protected endpoints
-    return axios
+    axiosWithAuth()
         .put(`https://usemytechstuff.herokuapp.com/api/tech/${item.id}`, item)
         .then(response => {
             console.log(response.data);
@@ -156,7 +157,7 @@ export const ADD_COMMENTS_FAILURE = 'ADD_COMMENTS_FAILURE'
 export const addingComment = (comment) => dispatch => {
     dispatch({ type: ADD_COMMENTS })
     // insert axiosWithAuth here for protected endpoints
-    return axios
+    axiosWithAuth()
         .post('', comment)
         .then(response => {
             console.log(response.data);
