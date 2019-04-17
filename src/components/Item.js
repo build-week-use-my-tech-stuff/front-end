@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteItem, updateItem } from '../actions';
+import { deleteItem, updateItem, fetchingItems } from '../actions';
 import { ItemContainer, ActionBtn, Img, Inputs } from './StyledComponents';
 
 class Item extends React.Component {
@@ -20,7 +20,11 @@ class Item extends React.Component {
         }
     }
     
-
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.item.id != this.props.item.id) {
+    //         this.props.fetchingItems()
+    //     }
+    // }
     handleEdits = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -28,16 +32,19 @@ class Item extends React.Component {
     }
 
 
-    handleUpdate = (id) => {
-        console.log('update: id!', id);
-        this.props.updateItem(id,
-            {id: this.props.item.id,
-            name: this.state.newName, 
-            category: this.state.newCategory,
-            description: this.state.newDescription,  
-            cost: this.state.newCost});
-        this.setState({ editing: false })
+    handleUpdate = () => {
         
+        return (id) => {
+            console.log('$$$$$$$$$$UPDATYE!', id);
+            this.props.updateItem(id,
+                {
+                id: this.props.item.id,
+                name: this.state.newName, 
+                category: this.state.newCategory,
+                description: this.state.newDescription,  
+                cost: this.state.newCost});
+            this.setState({ editing: false })
+        }
     }
 
     toggleRented =(id) => {
@@ -58,12 +65,11 @@ class Item extends React.Component {
         let editBtn = 'Edit Item';
         this.state.editing ? editBtn = 'Submit Update' : editBtn = 'Edit Item';
         let editBtnFunction = this.handleUpdate; 
-        this.state.editing ? editBtnFunction = this.handleUpdate : editBtnFunction = this.toggleEdits;
-        console.log('props?',this.props);
+        this.state.editing ? editBtnFunction = this.handleUpdate() : editBtnFunction = this.toggleEdits;
         return (
             <ItemContainer>
                 <div>
-                    <Img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>
+                   {this.props.item &&  <Img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>}
                     {!this.state.editing ? (<h2>{this.props.item.name}</h2>) : 
                     (<div> 
                         <Inputs 
@@ -138,4 +144,4 @@ const mapStateToProps = state => ({
     error: state.error
 })
 
-export default connect(mapStateToProps, { deleteItem, updateItem })(Item);
+export default connect(mapStateToProps, { deleteItem, updateItem, fetchingItems })(Item);

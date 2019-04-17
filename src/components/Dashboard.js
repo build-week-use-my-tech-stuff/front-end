@@ -13,14 +13,18 @@ class Dashboard extends React.Component {
 
     render(){
         console.log('userID', this.props.user_id)
+        if (!this.props.tech) {
+            return <p> Loading.. </p>
+        }
     return (
             <div>
                 {this.props.isLoggedIn ? <ItemForm /> : null}
                 <div>
-                    {this.props.tech.map(item => (
+                    
+                    { this.props.tech.map(item => (
                         <Item 
                             item = {item}
-                            key = {item.id}
+                            // key = {item.id}
                         />
                     ))}
                 </div>

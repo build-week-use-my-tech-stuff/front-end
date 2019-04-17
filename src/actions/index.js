@@ -135,11 +135,10 @@ export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
 export const updateItem = (id, item) => dispatch => {
     dispatch({ type: UPDATE_ITEM })
     // insert axiosWithAuth here for protected endpoints
-    console.log("itemid", id);
     axiosWithAuth()
         .put(`https://usemytechstuff.herokuapp.com/api/tech/${id}`, item)
         .then(response => {
-            console.log('this is the update', response.data);
+            console.table( response.data); //?
             dispatch({ type: UPDATE_ITEM_SUCCESS, payload: response.data })
         })
         .catch(err => {

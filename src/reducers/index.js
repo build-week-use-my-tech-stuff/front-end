@@ -185,7 +185,8 @@ const reducer = ( state = initialState, action ) => {
                     if(item.id === action.payload) {
                         item = action.payload
                         return item;
-                    }
+                    } 
+                    return item;     
                 })],
                 error: null,
             }
