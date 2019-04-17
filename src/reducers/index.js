@@ -51,6 +51,7 @@ const reducer = ( state = initialState, action ) => {
                 loggingIn: false,
                 error: action.payload
             }
+// Logout Case
         case LOGOUT_SUCCESS:
             return {
                 ...state,
@@ -65,6 +66,7 @@ const reducer = ( state = initialState, action ) => {
                 error: null,
                 user_id: null
             }
+// Getting Users Data Cases
         case FETCHING_USERS:
             return {
                 ...state,
@@ -107,10 +109,6 @@ const reducer = ( state = initialState, action ) => {
                 isRegistered: false,
                 error: action.payload
             }
-// Getting Users Data Cases
-        // case FETCHING_USERS:
-        // case FETCHING_USERS_SUCCESS:
-        // case FETCHING_USERS_FAILURE:
 // Getting Item Data Cases
         case FETCHING_ITEM:
             return {

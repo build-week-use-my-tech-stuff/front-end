@@ -44,42 +44,37 @@ class ItemForm extends React.Component {
     render() {
         return (
             <ItemFormStyle>
-                <h1> Add an Item </h1>
+                <h1> Add An Item </h1>
                 <form>
-                    <Inputs
-                        className = 'input' 
+                    <Inputs 
                         type = 'text'
                         name = 'name'
                         placeholder = 'Item Name'
                         onChange = {this.handleAddChange}
                         value = {this.state.name}
                     />
-                    <Inputs
-                        className = 'input' 
+                    <Inputs 
                         type = 'text'
                         name = 'category'
                         placeholder = 'Category'
                         onChange = {this.handleAddChange}
                         value = {this.state.category}
                     />
-                    <Inputs
-                        className = 'input' 
+                    <Inputs 
                         type = 'text'
                         name = 'cost'
                         placeholder = 'Cost To Rent'
                         onChange = {this.handleAddChange}
                         value = {this.state.cost}
                     />
-                    <Inputs
-                        className = 'input' 
+                    <Inputs 
                         type = 'text'
                         name = 'description'
                         placeholder = 'Item Description'
                         onChange = {this.handleAddChange}
                         value = {this.state.description}
                     />
-                    <Inputs
-                        className = 'input' 
+                    <Inputs 
                         type = 'text'
                         name = 'picture'
                         placeholder = 'Image URL'

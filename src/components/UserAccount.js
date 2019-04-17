@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import { ItemContainer, Img } from '../components/StyledComponents';
 
 
-
 const UserAccount = props => {
-    // console.log("tech!", props.tech);
-    // console.log("tech!", props.user_id);
     return (
         <div>
             <ItemContainer>

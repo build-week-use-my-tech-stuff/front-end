@@ -27,7 +27,7 @@ class Item extends React.Component {
 
     toggleRent= event => {
         let rentable = !this.state.availability
-        console.log('thisisworking!?', rentable);
+        console.log('toggling!', rentable);
         this.setState({
             availability: rentable
         })

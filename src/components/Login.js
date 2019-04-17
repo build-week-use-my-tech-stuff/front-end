@@ -32,11 +32,10 @@ class Login extends React.Component {
 
     render() {
         return (
-          <LoginForm className = 'form'>
+          <LoginForm>
             <h1>Login</h1>
             <form onSubmit={this.login}>
               <Inputs
-                className = 'input'
                 type='text'
                 name='username'
                 placeholder='Username'
@@ -44,14 +43,13 @@ class Login extends React.Component {
                 value={this.state.credentials.username}
               />
               <Inputs
-                className = 'input'
                 type='password'
                 name='password'
                 placeholder='Password'
                 onChange={this.handleLoginChange}
                 value={this.state.credentials.password}
               />
-              <ActionBtn className = 'actionBtn'>Log in</ActionBtn>
+              <ActionBtn>Log in</ActionBtn>
             </form>
           </LoginForm>
         );
