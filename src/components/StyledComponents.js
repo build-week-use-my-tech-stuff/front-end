@@ -76,6 +76,10 @@ export const ItemContainer = styled.div `
     }
 `;
 
+export const Rented = styled.p `
+    color: red;
+`;
+
 // Add Item Form
 export const ItemFormStyle = styled.div `
     background: lightgray;

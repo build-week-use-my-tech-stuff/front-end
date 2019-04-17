@@ -104,6 +104,7 @@ export const addingItem = (item) => dispatch => {
         .then(response => {
             console.log(response.data);
             dispatch({ type: ADD_ITEM_SUCCESS, payload: response.data })
+            window.location.reload();
         })
         .catch(err => {
             dispatch({ type: ADD_ITEM_FAILURE, payload: err })
@@ -138,7 +139,7 @@ export const updateItem = (id, item) => dispatch => {
     axiosWithAuth()
         .put(`https://usemytechstuff.herokuapp.com/api/tech/${id}`, item)
         .then(response => {
-            console.table( response.data); //?
+            console.table( response.data);
             dispatch({ type: UPDATE_ITEM_SUCCESS, payload: response.data })
         })
         .catch(err => {

@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
                     { this.props.tech.map(item => (
                         <Item 
                             item = {item}
-                            // key = {item.id}
+                            key = {item.id}
                         />
                     ))}
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteItem, updateItem, fetchingItems } from '../actions';
-import { ItemContainer, ActionBtn, Img, Inputs } from './StyledComponents';
+import { ItemContainer, ActionBtn, Img, Inputs, Rented } from './StyledComponents';
 
 class Item extends React.Component {
     
@@ -11,20 +11,21 @@ class Item extends React.Component {
         this.state = {
             availability: true,
             editing: false,
-            newName: this.props.item.name, //changed from this.props.name
-            newCategory: this.props.item.category,  //changed from this.props.category
-            newCost: this.props.item.cost, //changed from this.props.cost
-            newDescription: this.props.item.description, //changed from this.props.description
+            newName: this.props.item.name,
+            newCategory: this.props.item.category,
+            newCost: this.props.item.cost,
+            newDescription: this.props.item.description,
             user: this.props.item.user,
             id: this.props.item.id
         }
     }
     
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevProps.item.id != this.props.item.id) {
-    //         this.props.fetchingItems()
-    //     }
-    // }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.item != this.props.item) {
+            // this.props.fetchingItems();
+        }
+    }
+
     handleEdits = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -33,12 +34,9 @@ class Item extends React.Component {
 
 
     handleUpdate = () => {
-        
         return (id) => {
-            console.log('$$$$$$$$$$UPDATYE!', id);
             this.props.updateItem(id,
-                {
-                id: this.props.item.id,
+                {id: this.props.item.id,
                 name: this.state.newName, 
                 category: this.state.newCategory,
                 description: this.state.newDescription,  
@@ -47,8 +45,8 @@ class Item extends React.Component {
         }
     }
 
-    toggleRented =(id) => {
-        this.props.updateItem(id)
+    toggleRented =() => {
+        // this.props.updateItem(id)
         this.setState({
             availability: false
         })
@@ -61,7 +59,6 @@ class Item extends React.Component {
     }
 
     render(){
-        // console.table(this.props.item)
         let editBtn = 'Edit Item';
         this.state.editing ? editBtn = 'Submit Update' : editBtn = 'Edit Item';
         let editBtnFunction = this.handleUpdate; 
@@ -127,9 +124,9 @@ class Item extends React.Component {
                     </div>                    
                     )}
                 </div>
-                {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
+                {localStorage.getItem('token') ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
                 {this.props.isLoggedIn ? <ActionBtn onClick = {()=> editBtnFunction(this.props.item.id)}>{editBtn}</ActionBtn> : null}
-                {this.state.availability ? <ActionBtn onClick = {() =>this.toggleRented(this.props.item.id)}>Rent Item</ActionBtn> : <p className = 'rented'>This Item Has Been Rented</p>}
+                {this.state.availability ? <ActionBtn onClick = {() =>this.toggleRented(this.props.item.id)}>Rent Item</ActionBtn> : <Rented>This Item Has Been Rented</Rented>}
                 {/* <Comment comments = {this.props.item.comments} /> */}
             </ItemContainer>
         )

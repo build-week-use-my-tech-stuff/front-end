@@ -43,7 +43,6 @@ const reducer = ( state = initialState, action ) => {
                 isLoggedIn: true,
                 error: null,
                 user_id: action.payload.user_id,
-                // userItems: [...state.tech.filter(item => item.user_id.toString() === state.user_id.toString())]
             }
         case LOGIN_FAILURE:
             return {
@@ -100,7 +99,6 @@ const reducer = ( state = initialState, action ) => {
                 isRegistered: false,
                 isLoggedIn: true,
                 user_id: action.payload.id,
-                // userItems: [...state.tech.filter(item => item.user_id.toString() === state.user_id.toString())],
                 error: null,
             }
         case REGISTER_FAILURE:
