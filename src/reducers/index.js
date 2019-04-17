@@ -117,6 +117,7 @@ const reducer = ( state = initialState, action ) => {
                 error: null,
             }
         case FETCHING_ITEM_SUCCESS:
+        console.log('PAYLOAD:',action.payload)
             return {
                 ...state,
                 tech: action.payload,
@@ -184,7 +185,8 @@ const reducer = ( state = initialState, action ) => {
                     if(item.id === action.payload) {
                         item = action.payload
                         return item;
-                    }
+                    } 
+                    return item;     
                 })],
                 error: null,
             }

@@ -2,8 +2,8 @@
 
 **Demo-User Info:** 
 
+    Stevies | 123 (Working Register Request User)
     techRenterGuy | pass
-    sasha1010 | pass
     LambdaGrad | pass
 
 **Styling Method:** Styled Components.
@@ -19,7 +19,6 @@
     Add Items -> https://usemytechstuff.herokuapp.com/api/tech
     Delete Items -> https://usemytechstuff.herokuapp.com/api/tech
     Update Items -> https://usemytechstuff.herokuapp.com/api/tech
-    Add Comments ->
 
 **Functions:**
 

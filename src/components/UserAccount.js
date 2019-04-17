@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ItemContainer, Img } from '../components/StyledComponents';
+import { ItemContainer, Img, AccountItem } from '../components/StyledComponents';
 
 
 const UserAccount = props => {
@@ -18,22 +18,22 @@ const UserAccount = props => {
                 <img src = {props.user.picture} alt = 'profile'/>
             </ItemContainer>
 
-            <ItemContainer>
+            <div>
                 {props.tech.map(item => {
                     if(item.user_id.toString() === props.user_id.toString()){
                         return (
-                        <>
-                            <Img src = {item.picture} alt = 'rent item'/>
-                            <h3>{item.name}</h3>
-                            <p>Item Category: {item.category}</p>
-                            <p>Lender: {item.user}</p>
-                            <p>Cost: {item.cost}$/day</p>
-                            <p>{item.description}</p>
-                        </>
+                            <AccountItem>
+                                <Img src = {item.picture} alt = 'rent item'/>
+                                <h3>{item.name}</h3>
+                                <p>Item Category: {item.category}</p>
+                                <p>Lender: {item.user}</p>
+                                <p>Cost: {item.cost}$/day</p>
+                                <p>{item.description}</p>
+                            </AccountItem>
                         )
                     }
                 })}
-            </ItemContainer>
+            </div>
         </div>
     )
 }
