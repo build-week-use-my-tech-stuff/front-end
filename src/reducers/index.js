@@ -139,7 +139,7 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 addingItem: false,
-                tech: [...state.tech, action.payload],
+                tech: [...state.tech,{ ...action.payload, user: state.user.username}],
                 error: null
             }
         case ADD_ITEM_FAILURE:
@@ -180,7 +180,7 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 updatingItem: false,
                 tech: [...state.tech.map(item => {
-                    if(item.id === action.payload) {
+                    if(item.id.toString() === action.payload.id.toString()) {
                         item = action.payload
                         return item;
                     } 

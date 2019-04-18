@@ -6,11 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('/img/Oval.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  /* background-color: lightgray; */
+  background-color: rgb(253, 253, 234);
 }
 
 code {
