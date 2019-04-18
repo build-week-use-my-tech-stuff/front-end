@@ -10,6 +10,8 @@ import SignedIn from './components/navlinks/SignedIn';
 import SignedOut from './components/navlinks/SignedOut';
 import { AppHeader, AppContainer, LogoImg } from './components/StyledComponents';
 import BuildLogo from './BuildLogo.JPG';
+import ItemForm from './components/ItemForm';
+
 
 class App extends Component {
   componentDidMount() {
@@ -44,6 +46,10 @@ class App extends Component {
           <Route 
             path = '/profile'
             component = {UserAccount}
+          />
+          <Route 
+            path = '/listing'
+            component = {ItemForm}
           />
         </AppContainer>
       </Router>

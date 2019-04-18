@@ -6,6 +6,7 @@ const SignedIn = props => {
     return (
         <NavBar>
             <Link to = '/'>Dashboard</Link>
+            <Link to = '/listing'>Add Listing</Link>
             <Link to = '/profile'>Account</Link>
             <Link to = '/' onClick = {props.logout}>Logout</Link> 
         </NavBar>

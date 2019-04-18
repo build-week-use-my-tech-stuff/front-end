@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
                     placeholder = 'Search by Category'
                     onChange = {this.search}
                 />
-                {this.props.isLoggedIn ? <ItemForm /> : null}
+                {/* {this.props.isLoggedIn ? <ItemForm /> : null} */}
 
                 {this.state.filter.length === 0 ?
                     <div>
