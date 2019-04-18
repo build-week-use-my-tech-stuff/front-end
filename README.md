@@ -12,8 +12,8 @@
 
 **End Points:**
 
-    Post Login -> https://usemytechstuff.herokuapp.com/api/auth/register
-    Post Register -> https://usemytechstuff.herokuapp.com/api/auth/login
+    Post Login -> https://usemytechstuff.herokuapp.com/api/auth/login
+    Post Register -> https://usemytechstuff.herokuapp.com/api/auth/register
     Get Users => https://usemytechstuff.herokuapp.com/api/users
     Get Items -> https://usemytechstuff.herokuapp.com/api/tech
     Add Items -> https://usemytechstuff.herokuapp.com/api/tech
