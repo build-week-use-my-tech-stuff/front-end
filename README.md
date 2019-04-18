@@ -1,5 +1,7 @@
 **Front-End Repo for Use-My-Tech-Stuff Build Week.**
 
+Hosted on Netlify. https://rentmytech.netlify.com/
+
 **Demo-User Info:** 
 
     Stevies | 123 (Working Register Request User)
