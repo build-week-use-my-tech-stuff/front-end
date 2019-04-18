@@ -12,8 +12,9 @@ export const AppHeader = styled.div `
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed;
-    width: 100%; */
+    position: fixed;
+    top: 0;
+    width: 100%;
 
     p {
         font-size: 20px;
@@ -31,7 +32,7 @@ export const LoginForm = styled.div `
     height: 300px;
     border-radius: 25px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 20px;
     color: white;
 `;
@@ -47,7 +48,7 @@ export const RegisterForm = styled.div `
     height: 600px;
     border-radius: 25px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 150px;
 `;
 
 // all inputs
@@ -100,7 +101,7 @@ export const ItemFormStyle = styled.div `
     height: 400px;
     border-radius: 25px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 25px;
 `;
 
@@ -161,8 +162,8 @@ export const AccountInfo = styled.div `
     box-shadow: 0 0 10px -2px black;
     border-radius: 15px;
     margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 35px;
+    margin-top: 110px;
     text-shadow: 0 0 5px black;
 
     img {
@@ -181,14 +182,13 @@ export const AccountInfo = styled.div `
 export const AccountDetails = styled.div `
     text-align: left;
     border-left: 2px solid white;
-    padding: 0 15px 0 44px;
-    
+    padding: 0 15px 0 44px;  
 `;
 
 export const SearchBar = styled.input `
     padding: 10px;
     border-radius: 10px;
-    margin: 25px 0;
+    margin: 125px 0 50px 0;
     width: 30%;
     border: 2px solid silver;
 `;

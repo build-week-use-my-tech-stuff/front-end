@@ -38,6 +38,7 @@ class ItemForm extends React.Component {
             cost: '',
             availability: true,
         })
+        this.props.history.push('/')
     }
 
     render() {

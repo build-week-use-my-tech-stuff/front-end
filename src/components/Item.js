@@ -117,7 +117,6 @@ class Item extends React.Component {
                     {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
                     {this.props.isLoggedIn ? <ActionBtn onClick = {()=> editBtnFunction(this.props.item.id)}>{editBtn}</ActionBtn> : null}
                     {this.state.availability ? <ActionBtn onClick = {() =>this.toggleRented(this.props.item.id)}>Rent Item</ActionBtn> : <Rented>This Item Has Been Rented</Rented>}
-                    {/* <Comment comments = {this.props.item.comments} /> */}
                 </ItemDetails>
             </ItemContainer>
         )
