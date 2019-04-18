@@ -8,7 +8,8 @@ import Dashboard from './components/Dashboard';
 import UserAccount from './components/UserAccount';
 import SignedIn from './components/navlinks/SignedIn';
 import SignedOut from './components/navlinks/SignedOut';
-import { AppHeader, AppContainer } from './components/StyledComponents';
+import { AppHeader, AppContainer, LogoImg } from './components/StyledComponents';
+import BuildLogo from './BuildLogo.JPG';
 
 class App extends Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
       <Router>
         <AppContainer>
           <AppHeader>
-            <p>Use-My-Tech-Stuff</p>
+            <LogoImg src = {BuildLogo} alt = 'logo'/>
             {this.props.isLoggedIn ? <SignedIn logout = {this.logout}/> : <SignedOut /> }
           </AppHeader>
           <Route 

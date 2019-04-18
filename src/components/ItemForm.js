@@ -23,8 +23,7 @@ class ItemForm extends React.Component {
     }
 
     handleAddItem = event => {
-        console.log(this.props.user_id);
-        // event.preventDefault();
+        // console.log(this.props.user_id);
         this.props.addingItem({
             user_id: this.props.user_id, 
             name: this.state.name, category: this.state.category,

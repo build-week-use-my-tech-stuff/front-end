@@ -43,7 +43,6 @@ const reducer = ( state = initialState, action ) => {
                 isLoggedIn: true,
                 error: null,
                 user_id: action.payload.user_id,
-                // userItems: [...state.tech.filter(item => item.user_id.toString() === state.user_id.toString())]
             }
         case LOGIN_FAILURE:
             return {
@@ -100,7 +99,6 @@ const reducer = ( state = initialState, action ) => {
                 isRegistered: false,
                 isLoggedIn: true,
                 user_id: action.payload.id,
-                // userItems: [...state.tech.filter(item => item.user_id.toString() === state.user_id.toString())],
                 error: null,
             }
         case REGISTER_FAILURE:
@@ -141,7 +139,7 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 addingItem: false,
-                tech: [...state.tech, action.payload],
+                tech: [...state.tech,{ ...action.payload, user: state.user.username}],
                 error: null
             }
         case ADD_ITEM_FAILURE:
@@ -182,7 +180,7 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 updatingItem: false,
                 tech: [...state.tech.map(item => {
-                    if(item.id === action.payload) {
+                    if(item.id.toString() === action.payload.id.toString()) {
                         item = action.payload
                         return item;
                     } 

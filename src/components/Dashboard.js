@@ -6,13 +6,11 @@ import { connect } from 'react-redux';
 
 class Dashboard extends React.Component {
     componentDidMount() {
-        let id = localStorage.getItem('user_id')
-        console.log('is the id here!', id);
         this.props.fetchingItems();
     }
 
     render(){
-        console.log('userID', this.props.user_id)
+        // console.log('userID', this.props.user_id)
         if (!this.props.tech) {
             return <p> Loading.. </p>
         }
@@ -24,7 +22,7 @@ class Dashboard extends React.Component {
                     { this.props.tech.map(item => (
                         <Item 
                             item = {item}
-                            // key = {item.id}
+                            key = {item.id}
                         />
                     ))}
                 </div>

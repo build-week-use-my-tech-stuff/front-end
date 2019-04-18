@@ -50,7 +50,7 @@ class Login extends React.Component {
                 onChange={this.handleLoginChange}
                 value={this.state.credentials.password}
               />
-              <ActionBtn>{ this.props.loggingIn ? (<Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) : ('Login')}</ActionBtn>
+              <ActionBtn>{ this.props.loggingIn ? (<Loader type="ThreeDots" color="orange" height="12" width="26" />) : ('Login')}</ActionBtn>
             </form>
           </LoginForm>
         );
