@@ -12,7 +12,8 @@ export const AppHeader = styled.div `
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed; */
+    /* position: fixed;
+    width: 100%; */
 
     p {
         font-size: 20px;
@@ -182,4 +183,12 @@ export const AccountDetails = styled.div `
     border-left: 2px solid white;
     padding: 0 15px 0 44px;
     
+`;
+
+export const SearchBar = styled.input `
+    padding: 10px;
+    border-radius: 10px;
+    margin: 25px 0;
+    width: 30%;
+    border: 2px solid silver;
 `;
