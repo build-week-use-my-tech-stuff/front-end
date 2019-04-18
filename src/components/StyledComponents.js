@@ -12,6 +12,7 @@ export const AppHeader = styled.div `
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* position: fixed; */
 
     p {
         font-size: 20px;
@@ -79,14 +80,12 @@ export const ItemContainer = styled.div `
     margin-bottom: 20px;
     margin-top: 20px;
     text-shadow: 0 0 5px black;
-
-    ${ItemContainer} .rented {
-        color: red,
-    }
 `;
 
 export const Rented = styled.p `
-    color: red;
+    color: orange;
+    font-weight: bold;
+    font-size: 18px;
 `;
 
 // Add Item Form
@@ -111,13 +110,14 @@ export const Img = styled.img `
 `;
 
 export const AccountItem = styled.div `
-    background: lightgray;
+    background: white;
     width: 600px;
-    border: 3px solid black;
     border-radius: 15px;
     margin: auto;
     margin-bottom: 20px;
     margin-top: 20px;
+    text-shadow: 0 0 5px black;
+    box-shadow: 0 1px 10px -2px grey;
 `;
 
 export const LogoImg = styled.img `
@@ -144,8 +144,42 @@ export const DetailSpan = styled.span `
     font-size: 20px;
 `;
 
-export const DetailDesc = styled.div `
+export const DetailDesc = styled.p `
     text-align: left;
     margin-bottom: 15px;
     padding: 20px;
+`;
+
+export const AccountInfo = styled.div `
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    background-color: #00B1E7;
+    color: white;
+    width: 800px;
+    box-shadow: 0 0 10px -2px black;
+    border-radius: 15px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-shadow: 0 0 5px black;
+
+    img {
+        border-radius: 12.5px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        width: 400px;
+        margin: 15px
+    }
+
+    h1 {
+        text-decoration: underline;
+    }
+`;
+
+export const AccountDetails = styled.div `
+    text-align: left;
+    border-left: 2px solid white;
+    padding: 0 15px 0 44px;
+    
 `;

@@ -1,34 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ItemContainer, Img, AccountItem } from '../components/StyledComponents';
+import { AccountInfo, Img, AccountItem, DetailDesc, DetailSpan, ItemDetails, ItemName, AccountDetails } from '../components/StyledComponents';
 
 
 const UserAccount = props => {
     return (
         <div>
-            <ItemContainer>
-                <h1>My Account Information</h1>
-                <p>Username: {props.user.username}</p>
-                <p>Email Address: {props.user.email}</p>
-                <p>First Name: {props.user.firstname}</p>
-                <p>Last Name: {props.user.lastname}</p>
-                <p>Country: {props.user.country}</p>
-                <p>State: {props.user.state}</p>
-                <p>Phone Number: {props.user.phonenumber}</p>
+            <AccountInfo>
+                <AccountDetails>
+                    <h1><DetailSpan>My Account Information</DetailSpan></h1>
+                    <div/>
+                    <p><DetailSpan>Username: </DetailSpan>{props.user.username}</p>
+                    <p><DetailSpan>Email Address: </DetailSpan>{props.user.email}</p>
+                    <p><DetailSpan>First Name: </DetailSpan>{props.user.firstname}</p>
+                    <p><DetailSpan>Last Name: </DetailSpan>{props.user.lastname}</p>
+                    <p><DetailSpan>Country: </DetailSpan>{props.user.country}</p>
+                    <p><DetailSpan>State: </DetailSpan>{props.user.state}</p>
+                    <p><DetailSpan>Phone Number: </DetailSpan>{props.user.phonenumber}</p>
+                </AccountDetails>
                 <img src = {props.user.picture} alt = 'profile'/>
-            </ItemContainer>
+            </AccountInfo>
 
             <div>
                 {props.tech.map(item => {
                     if(item.user_id.toString() === props.user_id.toString()){
                         return (
                             <AccountItem>
+                                <ItemName>
+                                    <h2>{item.name}</h2>
+                                </ItemName>
                                 <Img src = {item.picture} alt = 'rent item'/>
-                                <h3>{item.name}</h3>
-                                <p>Item Category: {item.category}</p>
-                                <p>Lender: {item.user}</p>
-                                <p>Cost: {item.cost}$/day</p>
-                                <p>{item.description}</p>
+                                <ItemDetails>
+                                    <p><DetailSpan>Item Category: </DetailSpan>{item.category}</p>
+                                    <p><DetailSpan>Lender: </DetailSpan>{item.user}</p>
+                                    <p><DetailSpan>Cost: </DetailSpan>{item.cost}$/day</p>
+                                    <DetailDesc>{item.description}</DetailDesc>
+                                </ItemDetails>
                             </AccountItem>
                         )
                     }

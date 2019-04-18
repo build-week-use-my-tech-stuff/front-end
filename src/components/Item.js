@@ -7,7 +7,6 @@ class Item extends React.Component {
     
     constructor(props){
         super(props);
-        console.log("looking for items", this.props.item);
         this.state = {
             availability: true,
             editing: false,
@@ -17,12 +16,6 @@ class Item extends React.Component {
             newDescription: this.props.item.description,
             user: this.props.item.user,
             id: this.props.item.id
-        }
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.item != this.props.item) {
-            // this.props.fetchingItems();
         }
     }
 
@@ -46,7 +39,6 @@ class Item extends React.Component {
     }
 
     toggleRented =() => {
-        // this.props.updateItem(id)
         this.setState({
             availability: false
         })
@@ -63,24 +55,27 @@ class Item extends React.Component {
         this.state.editing ? editBtn = 'Submit Update' : editBtn = 'Edit Item';
         let editBtnFunction = this.handleUpdate; 
         this.state.editing ? editBtnFunction = this.handleUpdate() : editBtnFunction = this.toggleEdits;
+
         return (
             <ItemContainer>
                 <ItemName>
-                {!this.state.editing ? (<h2>{this.props.item.name}</h2>) : 
-                    (<div> 
-                        <Inputs 
-                            type = 'text'
-                            name = 'newName'
-                            placeholder = {this.props.item.name}
-                            value = {this.state.newName}
-                            onChange = {this.handleEdits}
-                        />
-                    </div>                    
-                    )}
-                   </ItemName>
-                   {this.props.item &&  <Img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>}
-                   <ItemDetails>
-                    <div>
+                    {!this.state.editing ? (<h2>{this.props.item.name}</h2>) : 
+                        (<div> 
+                            <Inputs 
+                                type = 'text'
+                                name = 'newName'
+                                placeholder = {this.props.item.name}
+                                value = {this.state.newName}
+                                onChange = {this.handleEdits}
+                            />
+                        </div>                    
+                        )}
+                </ItemName>
+
+                {this.props.item &&  <Img src = {this.props.item.picture} alt = 'rentable item' className = 'itemImg'/>}
+
+                <ItemDetails>
+
                     {!this.state.editing ? (<p><DetailSpan>Category: </DetailSpan>{this.props.item.category}</p>) : 
                     (<div> 
                         <Inputs 
@@ -92,18 +87,9 @@ class Item extends React.Component {
                         />
                     </div>                    
                     )}
-                    {/* {!this.state.editing ? (<p>Lender: {this.props.item.user}</p>) : 
-                    (<div> 
-                        <Inputs 
-                            type = 'text'
-                            name = 'newUser'
-                            placeholder = {this.props.item.user}
-                            value = {this.state.newUser}
-                            onChange = {this.handleEdits}
-                        />
-                    </div>                    
-                    )} */}
+
                     <p><DetailSpan> Lender: </DetailSpan>{this.props.item.user} </p>
+
                     {!this.state.editing ? (<p><DetailSpan>Cost: </DetailSpan>{this.props.item.cost}$/day</p>) : 
                     (<div> 
                         <Inputs 
@@ -115,6 +101,7 @@ class Item extends React.Component {
                         />
                     </div>                    
                     )}
+
                     {!this.state.editing ? (<DetailDesc>{this.props.item.description}</DetailDesc>) : 
                     (<div> 
                         <Inputs 
@@ -127,11 +114,10 @@ class Item extends React.Component {
                     </div>                    
                     )}
                     
-                </div>
-                {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
-                {this.props.isLoggedIn ? <ActionBtn onClick = {()=> editBtnFunction(this.props.item.id)}>{editBtn}</ActionBtn> : null}
-                {this.state.availability ? <ActionBtn onClick = {() =>this.toggleRented(this.props.item.id)}>Rent Item</ActionBtn> : <Rented>This Item Has Been Rented</Rented>}
-                {/* <Comment comments = {this.props.item.comments} /> */}
+                    {this.props.isLoggedIn ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
+                    {this.props.isLoggedIn ? <ActionBtn onClick = {()=> editBtnFunction(this.props.item.id)}>{editBtn}</ActionBtn> : null}
+                    {this.state.availability ? <ActionBtn onClick = {() =>this.toggleRented(this.props.item.id)}>Rent Item</ActionBtn> : <Rented>This Item Has Been Rented</Rented>}
+                    {/* <Comment comments = {this.props.item.comments} /> */}
                 </ItemDetails>
             </ItemContainer>
         )
@@ -147,5 +133,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { deleteItem, updateItem, fetchingItems })(Item);
-
-// {localStorage.getItem('token') ? <ActionBtn onClick = {() => this.props.deleteItem(this.props.item.id)}>Delete Item</ActionBtn> : null}
