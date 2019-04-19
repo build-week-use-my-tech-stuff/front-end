@@ -189,6 +189,6 @@ export const SearchBar = styled.input `
     padding: 10px;
     border-radius: 10px;
     margin: 125px 0 50px 0;
-    width: 30%;
+    width: 45%;
     border: 2px solid silver;
 `;
